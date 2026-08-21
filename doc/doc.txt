@@ -1,0 +1,6 @@
+-$80F999
+Copy PSRAM back to WRAM
+Reset APU
+Upload function to WRAM and restore to BS-X Town
+
+RAM $0602 - Game Mode (09 = Fade To Black to Intro, 0A = Upload Intro stuff)
