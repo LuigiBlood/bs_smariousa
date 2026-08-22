@@ -97,6 +97,13 @@ seekAddr($80B6B1+1); replaceSRAMAddr() //$11546C
 seekAddr($80B6C5+1); replaceSRAMAddr() //$115464
 seekAddr($80B6D0+1); replaceSRAMAddr() //$115468
 
-
+seekAddr($809F1D+1); replaceSRAMAddr() //$11540E
+seekAddr($809F24+1); replaceSRAMAddr() //$115420
+seekAddr($809F29+1); replaceSRAMAddr() //$115422
+seekAddr($809F2D+1); replaceSRAMAddr() //$115424
+seekAddr($809F31+1); replaceSRAMAddr() //$115426
+seekAddr($809F35+1); replaceSRAMAddr() //$115428
+seekAddr($809F51+1); replaceSRAMAddr() //$115464
+seekAddr($809F68+1); replaceSRAMAddr() //$115400
 
 dequeue pc

@@ -70,10 +70,10 @@ constant STAT77 =   $213E
 constant STAT78 =   $213F
 
 //APU
-constant APUI00 =   $2140
-constant APUI01 =   $2141
-constant APUI02 =   $2142
-constant APUI03 =   $2143
+constant APUIO0 =   $2140
+constant APUIO1 =   $2141
+constant APUIO2 =   $2142
+constant APUIO3 =   $2143
 
 //WRAM Access
 constant WMDATA =   $2180

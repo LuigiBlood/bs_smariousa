@@ -13,7 +13,8 @@ hack_msu_play:
 	bne +
 
 	rep #$20
-	lda.w #1
+	lda.l $706000
+	inc
 	sta.w MSU_TRK
 	sep #$20
 -;	bit.w MSU_STATUS

@@ -3,7 +3,7 @@
 //However it doesn't necessarily take into account the slight 
 enqueue pc
 seekAddr($80F982)
-	lda.w #3600
+	lda.w #3605
 dequeue pc
 
 //Change Hour and Minute (At Boot) (Original Code: 18:05)

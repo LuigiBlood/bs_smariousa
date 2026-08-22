@@ -1,4 +1,4 @@
-Set 0x3000C = 00 (Week 1), 01 (Week 2), 02 (Week 3), 03 (Week 4)
+Set 0x3000C ($86800C) = 00 (Week 1), 01 (Week 2), 02 (Week 3), 03 (Week 4)
 
 -$80F999
 Copy PSRAM back to WRAM

@@ -14,6 +14,10 @@ seekFile(0); insert "./roms/bs_supermariousa_ep1.bs"
 
 include "./asm/combo.asm"
 
+seekAddr($86800C); db 0		//Episode (0-3)
+seekAddr($86800E); db 0		//?
+seekAddr($86800F); db 0		//?
+
 seekFile(0x7FC0); db "                     "
 seekFile(0x7FC0); db "BS",0x83,0x58,0x81,0x5B,0x83,0x70,0x81,0x5B,0x83,0x7D,0x83,0x8A,0x83,0x49,"USA"
 seekFile(0x7FD5); db 0x30	//Map Mode LoROM + FastROM
