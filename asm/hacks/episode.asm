@@ -33,11 +33,11 @@ dequeue pc
 
 //Differing Data between episodes:
 //File		SNES	  Size
-//0x49800 - $899800 - 0x800		= Tilemap
-//0x4A000 - $89A000	- 0x800		= Tilemap
-//0x4F400 - $89F400 - 0x200		= Palette
-//0x4FC00 - $89FC00 - 0x200		= Palette
-//0x4FE00 - $89FE00 - 0x200		= Palette
+//0x49800 - $899800 - 0x800		= Tilemap (Current Episode)
+//0x4A000 - $89A000	- 0x800		= Tilemap (Next Episode?)
+//0x4F400 - $89F400 - 0x200		= Palette (Ad?)
+//0x4FC00 - $89FC00 - 0x200		= Palette (Current Episode)
+//0x4FE00 - $89FE00 - 0x200		= Palette (Next Episode?)
 //0x50000 - $8A8000 - 0x7800	= Graphics (Ad?)
 //0x57800 - $8AF800 - 0x800		= Tilemap (Ad?)
 //0x70000 - $8E8000 - 0x8000	= Graphics (Current Episode)
@@ -79,13 +79,128 @@ insert ep3_map2,"../../roms/bs_supermariousa_ep3.bs",0x4A000,0x800
 insert ep4_map1,"../../roms/bs_supermariousa_ep4.bs",0x49800,0x800
 insert ep4_map2,"../../roms/bs_supermariousa_ep4.bs",0x4A000,0x800
 
-seekAddr($B28000)
-insert ep1_chr2,"../../roms/bs_supermariousa_ep1.bs",0x70000,0x8000
-insert ep1_chr3,"../../roms/bs_supermariousa_ep1.bs",0x78000,0x8000
-insert ep2_chr2,"../../roms/bs_supermariousa_ep2.bs",0x70000,0x8000
-insert ep2_chr3,"../../roms/bs_supermariousa_ep2.bs",0x78000,0x8000
-insert ep3_chr2,"../../roms/bs_supermariousa_ep3.bs",0x70000,0x8000
-insert ep3_chr3,"../../roms/bs_supermariousa_ep3.bs",0x78000,0x8000
-insert ep4_chr2,"../../roms/bs_supermariousa_ep4.bs",0x70000,0x8000
-insert ep4_chr3,"../../roms/bs_supermariousa_ep4.bs",0x78000,0x8000
+seekAddr($B28000); insert ep1_chr2,"../../roms/bs_supermariousa_ep1.bs",0x70000,0x8000
+seekAddr($B38000); insert ep1_chr3,"../../roms/bs_supermariousa_ep1.bs",0x78000,0x8000
+seekAddr($B48000); insert ep2_chr2,"../../roms/bs_supermariousa_ep2.bs",0x70000,0x8000
+seekAddr($B58000); insert ep2_chr3,"../../roms/bs_supermariousa_ep2.bs",0x78000,0x8000
+seekAddr($B68000); insert ep3_chr2,"../../roms/bs_supermariousa_ep3.bs",0x70000,0x8000
+seekAddr($B78000); insert ep3_chr3,"../../roms/bs_supermariousa_ep3.bs",0x78000,0x8000
+seekAddr($B88000); insert ep4_chr2,"../../roms/bs_supermariousa_ep4.bs",0x70000,0x8000
+seekAddr($B98000); insert ep4_chr3,"../../roms/bs_supermariousa_ep4.bs",0x78000,0x8000
 dequeue pc
+
+//Hijack Episode Intro 3rd image Address Upload
+//Sub Game Mode $10
+enqueue pc
+seekAddr($80A2BF)	//Tilemap
+	jsl hack_g02s0A_map
+	    nop;nop;
+	nop;nop;
+	nop;nop;nop
+	//lda.w $A295,x	3
+	//sta.w A1T0L	3
+	//ldy.b #$89	2
+	//sty.w A1B0	3
+dequeue pc
+hack_g02s0A_map:
+	cpx.b #3*2
+	bne +
+	//Original Addr $899800
+	phx
+	lda.l $706000
+	asl
+	tax
+	lda.l tbl_g02s0A_map_a,x
+	sta.w A1T0L
+	lda.l tbl_g02s0A_map_b,x
+	tay
+	sty.w A1B0
+	plx
+	rtl
++;	lda.l $80A295,x
+	sta.w A1T0L
+	ldy.b #$89
+	sty.w A1B0
+	rtl
+
+tbl_g02s0A_map_a:
+	dw ep1_map1, ep2_map1, ep3_map1, ep4_map1
+tbl_g02s0A_map_b:
+	dw ep1_map1 >> 16, ep2_map1 >> 16, ep3_map1 >> 16, ep4_map1 >> 16
+
+
+enqueue pc
+seekAddr($80A2DB)	//Graphics
+	jsl hack_g02s0A_chr
+	    nop;nop;
+	nop;nop;nop
+	nop;nop;nop
+	//lda.w #$8000
+	//sta.w A1T0L
+	//ldy.w $A29D,x
+	//sty.w A1B0
+dequeue pc
+hack_g02s0A_chr:
+	cpx.b #3*2
+	bne +
+	//Original Addr $8E8000
+	phx
+	lda.l $706000
+	asl
+	tax
+	lda.l tbl_g02s0A_chr_a,x
+	sta.w A1T0L
+	lda.l tbl_g02s0A_chr_b,x
+	tay
+	sty.w A1B0
+	plx
+	rtl
++;	lda.w #$8000
+	sta.w A1T0L
+	lda.l $80A29D,x
+	tay
+	sty.w A1B0
+	rtl
+
+tbl_g02s0A_chr_a:
+	dw ep1_chr2, ep2_chr2, ep3_chr2, ep4_chr2
+tbl_g02s0A_chr_b:
+	dw ep1_chr2 >> 16, ep2_chr2 >> 16, ep3_chr2 >> 16, ep4_chr2 >> 16
+
+
+enqueue pc
+seekAddr($80A2FF)	//Palette
+	jsl hack_g02s0A_pal
+	    nop;nop;
+	nop;nop;
+	nop;nop;nop
+	//lda.w $A2A5,x
+	//sta.w A1T0L
+	//ldy.b #$89
+	//sty.w A1B0
+dequeue pc
+hack_g02s0A_pal:
+	cpx.b #3*2
+	bne +
+	//Original Addr $89FC00
+	phx
+	lda.l $706000
+	asl
+	tax
+	lda.l tbl_g02s0A_pal_a,x
+	sta.w A1T0L
+	lda.l tbl_g02s0A_pal_b,x
+	tay
+	sty.w A1B0
+	plx
+	rtl
++;	lda.l $80A2A5,x
+	sta.w A1T0L
+	ldy.b #$89
+	sty.w A1B0
+	rtl
+
+tbl_g02s0A_pal_a:
+	dw ep1_pal2, ep2_pal2, ep3_pal2, ep4_pal2
+tbl_g02s0A_pal_b:
+	dw ep1_pal2 >> 16, ep2_pal2 >> 16, ep3_pal2 >> 16, ep4_pal2 >> 16
