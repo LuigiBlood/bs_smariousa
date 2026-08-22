@@ -24,7 +24,6 @@ time_init:
 	rep #$20
 	lda.w #60*3
 	sta.l $7FFFFA
-	jsl msu_init
 	sep #$20
 	rtl
 

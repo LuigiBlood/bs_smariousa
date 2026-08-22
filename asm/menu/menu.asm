@@ -24,6 +24,7 @@ boot_start:
 	jsl joypad_init
 	jsr init_ppu
 	jsr init_apu
+	jsl msu_init
 	sep #$20
 	jsl $809CEF		//upload audio data 1
 	jsr wait_vblank

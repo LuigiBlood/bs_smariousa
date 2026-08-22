@@ -117,7 +117,7 @@ hack_g02s0A_map:
 	sty.w A1B0
 	plx
 	rtl
-+;	lda.l $80A295,x
++;	lda.w $A295,x
 	sta.w A1T0L
 	ldy.b #$89
 	sty.w A1B0
@@ -157,7 +157,7 @@ hack_g02s0A_chr:
 	rtl
 +;	lda.w #$8000
 	sta.w A1T0L
-	lda.l $80A29D,x
+	lda.w $A29D,x
 	tay
 	sty.w A1B0
 	rtl
@@ -194,7 +194,7 @@ hack_g02s0A_pal:
 	sty.w A1B0
 	plx
 	rtl
-+;	lda.l $80A2A5,x
++;	lda.w $A2A5,x
 	sta.w A1T0L
 	ldy.b #$89
 	sty.w A1B0
