@@ -254,3 +254,65 @@ hack_g25s00_pal:
 
 tbl_g25s00_pal:
 	dl ep1_pal2, ep2_pal2, ep3_pal2, $89EE00
+
+
+//Hijack Next Episode Preview Image Address Upload
+//Game Mode $25-$09
+enqueue pc
+seekAddr($80A8F2)
+	jsl hack_g25s09_map
+	    nop;nop
+	nop;nop
+	nop;nop;nop
+	//lda.w #$A000	3
+	//sta.w A1T0L	3
+	//ldy.b #$89	2
+	//sty.w A1B0	3
+dequeue pc
+hack_g25s09_map:
+	clc
+	lda.l $706000
+	asl
+	adc.l $706000
+	tax
+	macro_g25s00(tbl_g25s09_map)
+
+tbl_g25s09_map:
+	dl ep1_map2, ep2_map2, ep3_map2, ep4_map2
+
+
+enqueue pc
+seekAddr($80A90E)
+	jsl hack_g25s09_chr
+	    nop;nop
+	nop;nop
+	nop;nop;nop
+	//lda.w #$8000	3
+	//sta.w A1T0L	3
+	//ldy.b #$8F	2
+	//sty.w A1B0	3
+dequeue pc
+hack_g25s09_chr:
+	macro_g25s00(tbl_g25s09_chr)
+
+tbl_g25s09_chr:
+	dl ep1_chr3, ep2_chr3, ep3_chr3, ep4_chr3
+
+
+enqueue pc
+seekAddr($80A931)
+	jsl hack_g25s09_pal
+	    nop;nop
+	nop;nop
+	nop;nop;nop
+	//lda.w #$FE00	3
+	//sta.w A1T0L	3
+	//ldy.b #$89	2
+	//sty.w A1B0	3
+dequeue pc
+hack_g25s09_pal:
+	macro_g25s00(tbl_g25s09_pal)
+
+tbl_g25s09_pal:
+	dl ep1_pal3, ep2_pal3, ep3_pal3, ep4_pal3
+
