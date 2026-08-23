@@ -35,58 +35,35 @@ dequeue pc
 //File		SNES	  Size
 //0x49800 - $899800 - 0x800		= Tilemap (Current Episode)
 //0x4A000 - $89A000	- 0x800		= Tilemap (Next Episode?)
-//0x4F400 - $89F400 - 0x200		= Palette (Ad?)
+//0x4F400 - $89F400 - 0x200		= Palette (Ad?) (Unused)
 //0x4FC00 - $89FC00 - 0x200		= Palette (Current Episode)
-//0x4FE00 - $89FE00 - 0x200		= Palette (Next Episode?)
-//0x50000 - $8A8000 - 0x7800	= Graphics (Ad?)
-//0x57800 - $8AF800 - 0x800		= Tilemap (Ad?)
+//0x4FE00 - $89FE00 - 0x200		= Palette (Next Episode)
+//0x50000 - $8A8000 - 0x7800	= Graphics (Ad?) (Unused)
+//0x57800 - $8AF800 - 0x800		= Tilemap (Ad?) (Unused)
 //0x70000 - $8E8000 - 0x8000	= Graphics (Current Episode)
 //0x78000 - $8F8000 - 0x8000	= Graphics (Next Episode)
 
-//Include 
+//Include all graphics
 enqueue pc
-seekAddr($899800); //insert ep1_map1,"../../roms/bs_supermariousa_ep1.bs",0x49800,0x800
-seekAddr($89A000); //insert ep1_map2,"../../roms/bs_supermariousa_ep1.bs",0x4A000,0x800
-seekAddr($89F400); //insert ep1_pal1,"../../roms/bs_supermariousa_ep1.bs",0x4F400,0x200
-seekAddr($89FC00); //insert ep1_pal2,"../../roms/bs_supermariousa_ep1.bs",0x4FC00,0x200
-seekAddr($89FE00); //insert ep1_pal3,"../../roms/bs_supermariousa_ep1.bs",0x4FE00,0x200
-seekAddr($8A8000); //insert ep1_chr1,"../../roms/bs_supermariousa_ep1.bs",0x50000,0x8000
-seekAddr($8AF800); //insert ep1_map3,"../../roms/bs_supermariousa_ep1.bs",0x57800,0x800
-seekAddr($8E8000); //insert ep1_chr2,"../../roms/bs_supermariousa_ep1.bs",0x70000,0x8000
-seekAddr($8F8000); //insert ep1_chr3,"../../roms/bs_supermariousa_ep1.bs",0x78000,0x8000
-
 seekAddr($B08000)
-insert ep1_pal1,"../../roms/bs_supermariousa_ep1.bs",0x4F400,0x200
-insert ep1_pal2,"../../roms/bs_supermariousa_ep1.bs",0x4FC00,0x200
-insert ep1_pal3,"../../roms/bs_supermariousa_ep1.bs",0x4FE00,0x200
-insert ep2_pal1,"../../roms/bs_supermariousa_ep2.bs",0x4F400,0x200
-insert ep2_pal2,"../../roms/bs_supermariousa_ep2.bs",0x4FC00,0x200
-insert ep2_pal3,"../../roms/bs_supermariousa_ep2.bs",0x4FE00,0x200
-insert ep3_pal1,"../../roms/bs_supermariousa_ep3.bs",0x4F400,0x200
-insert ep3_pal2,"../../roms/bs_supermariousa_ep3.bs",0x4FC00,0x200
-insert ep3_pal3,"../../roms/bs_supermariousa_ep3.bs",0x4FE00,0x200
-insert ep4_pal1,"../../roms/bs_supermariousa_ep4.bs",0x4F400,0x200
-insert ep4_pal2,"../../roms/bs_supermariousa_ep4.bs",0x4FC00,0x200
-insert ep4_pal3,"../../roms/bs_supermariousa_ep4.bs",0x4FE00,0x200
+insert ep1_pal_title,"../../roms/bs_supermariousa_ep1.bs",0x4FC00,0x200
+insert ep2_pal_title,"../../roms/bs_supermariousa_ep2.bs",0x4FC00,0x200
+insert ep3_pal_title,"../../roms/bs_supermariousa_ep3.bs",0x4FC00,0x200
+insert ep4_pal_title,"../../roms/bs_supermariousa_ep4.bs",0x4FC00,0x200
+insert ep4_pal_end,"../../roms/bs_supermariousa_ep4.bs",0x4FE00,0x200
 
 seekAddr($B18000)
-insert ep1_map1,"../../roms/bs_supermariousa_ep1.bs",0x49800,0x800
-insert ep1_map2,"../../roms/bs_supermariousa_ep1.bs",0x4A000,0x800
-insert ep2_map1,"../../roms/bs_supermariousa_ep2.bs",0x49800,0x800
-insert ep2_map2,"../../roms/bs_supermariousa_ep2.bs",0x4A000,0x800
-insert ep3_map1,"../../roms/bs_supermariousa_ep3.bs",0x49800,0x800
-insert ep3_map2,"../../roms/bs_supermariousa_ep3.bs",0x4A000,0x800
-insert ep4_map1,"../../roms/bs_supermariousa_ep4.bs",0x49800,0x800
-insert ep4_map2,"../../roms/bs_supermariousa_ep4.bs",0x4A000,0x800
+insert ep1_map_title,"../../roms/bs_supermariousa_ep1.bs",0x49800,0x800
+insert ep2_map_title,"../../roms/bs_supermariousa_ep2.bs",0x49800,0x800
+insert ep3_map_title,"../../roms/bs_supermariousa_ep3.bs",0x49800,0x800
+insert ep4_map_title,"../../roms/bs_supermariousa_ep4.bs",0x49800,0x800
+insert ep4_map_end,"../../roms/bs_supermariousa_ep4.bs",0x4A000,0x800
 
-seekAddr($B28000); insert ep1_chr2,"../../roms/bs_supermariousa_ep1.bs",0x70000,0x8000
-seekAddr($B38000); insert ep1_chr3,"../../roms/bs_supermariousa_ep1.bs",0x78000,0x8000
-seekAddr($B48000); insert ep2_chr2,"../../roms/bs_supermariousa_ep2.bs",0x70000,0x8000
-seekAddr($B58000); insert ep2_chr3,"../../roms/bs_supermariousa_ep2.bs",0x78000,0x8000
-seekAddr($B68000); insert ep3_chr2,"../../roms/bs_supermariousa_ep3.bs",0x70000,0x8000
-seekAddr($B78000); insert ep3_chr3,"../../roms/bs_supermariousa_ep3.bs",0x78000,0x8000
-seekAddr($B88000); insert ep4_chr2,"../../roms/bs_supermariousa_ep4.bs",0x70000,0x8000
-seekAddr($B98000); insert ep4_chr3,"../../roms/bs_supermariousa_ep4.bs",0x78000,0x8000
+seekAddr($B28000); insert ep1_chr_title,"../../roms/bs_supermariousa_ep1.bs",0x70000,0x8000
+seekAddr($B38000); insert ep2_chr_title,"../../roms/bs_supermariousa_ep2.bs",0x70000,0x8000
+seekAddr($B48000); insert ep3_chr_title,"../../roms/bs_supermariousa_ep3.bs",0x70000,0x8000
+seekAddr($B58000); insert ep4_chr_title,"../../roms/bs_supermariousa_ep4.bs",0x70000,0x8000
+seekAddr($B68000); insert ep4_chr_end,"../../roms/bs_supermariousa_ep4.bs",0x78000,0x8000
 dequeue pc
 
 //Hijack Episode Intro 3rd image Address Upload
@@ -131,7 +108,7 @@ hack_g02s0A_map:
 	rtl
 
 tbl_g02s0A_map:
-	dl ep1_map1, ep2_map1, ep3_map1, ep4_map1
+	dl ep1_map_title, ep2_map_title, ep3_map_title, ep4_map_title
 
 
 enqueue pc
@@ -156,7 +133,7 @@ hack_g02s0A_chr:
 	rtl
 
 tbl_g02s0A_chr:
-	dl ep1_chr2, ep2_chr2, ep3_chr2, ep4_chr2
+	dl ep1_chr_title, ep2_chr_title, ep3_chr_title, ep4_chr_title
 
 
 enqueue pc
@@ -180,7 +157,7 @@ hack_g02s0A_pal:
 	rtl
 
 tbl_g02s0A_pal:
-	dl ep1_pal2, ep2_pal2, ep3_pal2, ep4_pal2
+	dl ep1_pal_title, ep2_pal_title, ep3_pal_title, ep4_pal_title
 
 
 //Hijack Episode End Image Address Upload
@@ -224,7 +201,7 @@ hack_g25s00_map:
 	macro_g25s00(tbl_g25s00_map)
 
 tbl_g25s00_map:
-	dl ep1_map1, ep2_map1, ep3_map1, $89B800
+	dl ep1_map_title, ep2_map_title, ep3_map_title, $89B800
 
 enqueue pc
 seekAddr($80A4B4)
@@ -237,7 +214,7 @@ hack_g25s00_chr:
 	macro_g25s00(tbl_g25s00_chr)
 
 tbl_g25s00_chr:
-	dl ep1_chr2, ep2_chr2, ep3_chr2, $878000
+	dl ep1_chr_title, ep2_chr_title, ep3_chr_title, $878000
 
 enqueue pc
 seekAddr($80A4F3)
@@ -250,7 +227,7 @@ hack_g25s00_pal:
 	macro_g25s00(tbl_g25s00_pal)
 
 tbl_g25s00_pal:
-	dl ep1_pal2, ep2_pal2, ep3_pal2, $89EE00
+	dl ep1_pal_title, ep2_pal_title, ep3_pal_title, $89EE00
 
 
 //Hijack Next Episode Preview Image Address Upload
@@ -275,7 +252,7 @@ hack_g25s09_map:
 	macro_g25s00(tbl_g25s09_map)
 
 tbl_g25s09_map:
-	dl ep1_map2, ep2_map2, ep3_map2, ep4_map2
+	dl ep2_map_title, ep3_map_title, ep4_map_title, ep4_map_end
 
 
 enqueue pc
@@ -293,7 +270,7 @@ hack_g25s09_chr:
 	macro_g25s00(tbl_g25s09_chr)
 
 tbl_g25s09_chr:
-	dl ep1_chr3, ep2_chr3, ep3_chr3, ep4_chr3
+	dl ep2_chr_title, ep3_chr_title, ep4_chr_title, ep4_chr_end
 
 
 enqueue pc
@@ -311,5 +288,5 @@ hack_g25s09_pal:
 	macro_g25s00(tbl_g25s09_pal)
 
 tbl_g25s09_pal:
-	dl ep1_pal3, ep2_pal3, ep3_pal3, ep4_pal3
+	dl ep2_pal_title, ep3_pal_title, ep4_pal_title, ep4_pal_end
 
