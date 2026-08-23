@@ -38,7 +38,6 @@ boot_start:
 	jsr menu_init
 	sep #$20
 	lda.b #$01;	sta.w mirror_APUIO3
-	lda.b #$02;	sta.w mirror_APUIO2
 	jml menu_loop
 
 menu_init:
