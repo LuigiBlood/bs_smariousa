@@ -91,16 +91,18 @@ dequeue pc
 
 //Hijack Episode Intro 3rd image Address Upload
 //Game Mode $02-$0A
-inline macro_g02s0A(tbl_a, tbl_b) {
+inline macro_g02s0A(tbl_ptr) {
 	cpx.b #3*2
 	bne +
 	phx
+	clc
 	lda.l $706000
 	asl
+	adc.l $706000
 	tax
-	lda.l {tbl_a},x
+	lda.l {tbl_ptr},x
 	sta.w A1T0L
-	lda.l {tbl_b},x
+	lda.l {tbl_ptr}+2,x
 	tay
 	sty.w A1B0
 	plx
@@ -120,7 +122,7 @@ seekAddr($80A2BF)	//Tilemap
 	//sty.w A1B0	3
 dequeue pc
 hack_g02s0A_map:
-	macro_g02s0A(tbl_g02s0A_map_a, tbl_g02s0A_map_b)
+	macro_g02s0A(tbl_g02s0A_map)
 	//Original Addr $899800
 	lda.w $A295,x
 	sta.w A1T0L
@@ -128,10 +130,8 @@ hack_g02s0A_map:
 	sty.w A1B0
 	rtl
 
-tbl_g02s0A_map_a:
-	dw ep1_map1, ep2_map1, ep3_map1, ep4_map1
-tbl_g02s0A_map_b:
-	dw ep1_map1 >> 16, ep2_map1 >> 16, ep3_map1 >> 16, ep4_map1 >> 16
+tbl_g02s0A_map:
+	dl ep1_map1, ep2_map1, ep3_map1, ep4_map1
 
 
 enqueue pc
@@ -146,7 +146,7 @@ seekAddr($80A2DB)	//Graphics
 	//sty.w A1B0
 dequeue pc
 hack_g02s0A_chr:
-	macro_g02s0A(tbl_g02s0A_chr_a, tbl_g02s0A_chr_b)
+	macro_g02s0A(tbl_g02s0A_chr)
 	//Original Addr $8E8000
 	lda.w #$8000
 	sta.w A1T0L
@@ -155,10 +155,8 @@ hack_g02s0A_chr:
 	sty.w A1B0
 	rtl
 
-tbl_g02s0A_chr_a:
-	dw ep1_chr2, ep2_chr2, ep3_chr2, ep4_chr2
-tbl_g02s0A_chr_b:
-	dw ep1_chr2 >> 16, ep2_chr2 >> 16, ep3_chr2 >> 16, ep4_chr2 >> 16
+tbl_g02s0A_chr:
+	dl ep1_chr2, ep2_chr2, ep3_chr2, ep4_chr2
 
 
 enqueue pc
@@ -173,7 +171,7 @@ seekAddr($80A2FF)	//Palette
 	//sty.w A1B0
 dequeue pc
 hack_g02s0A_pal:
-	macro_g02s0A(tbl_g02s0A_pal_a, tbl_g02s0A_pal_b)
+	macro_g02s0A(tbl_g02s0A_pal)
 	//Original Addr $89FC00
 	lda.w $A2A5,x
 	sta.w A1T0L
@@ -181,10 +179,9 @@ hack_g02s0A_pal:
 	sty.w A1B0
 	rtl
 
-tbl_g02s0A_pal_a:
-	dw ep1_pal2, ep2_pal2, ep3_pal2, ep4_pal2
-tbl_g02s0A_pal_b:
-	dw ep1_pal2 >> 16, ep2_pal2 >> 16, ep3_pal2 >> 16, ep4_pal2 >> 16
+tbl_g02s0A_pal:
+	dl ep1_pal2, ep2_pal2, ep3_pal2, ep4_pal2
+
 
 //Hijack Episode End Image Address Upload
 //Game Mode $25-$00
