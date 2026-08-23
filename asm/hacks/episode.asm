@@ -185,3 +185,72 @@ tbl_g02s0A_pal_a:
 	dw ep1_pal2, ep2_pal2, ep3_pal2, ep4_pal2
 tbl_g02s0A_pal_b:
 	dw ep1_pal2 >> 16, ep2_pal2 >> 16, ep3_pal2 >> 16, ep4_pal2 >> 16
+
+//Hijack Episode End Image Address Upload
+//Game Mode $25-$00
+inline macro_g25s00(tbl_ptr) {
+	lda.l {tbl_ptr},x
+	sta.w A1T0L
+	lda.l {tbl_ptr}+2,x
+	tay
+	sty.w A1B0
+	rtl
+}
+
+enqueue pc
+seekAddr($80A480)
+	jsl hack_g25s00
+	nop;nop
+	nop;nop
+	nop;nop
+	//lda.l $706000	4
+	//cmp.b #$03	2
+	//bne +			2
+	//ldx #$03; +	2
+dequeue pc
+hack_g25s00:
+	clc
+	lda.l $706000
+	asl
+	adc.l $706000
+	tax
+	rtl
+
+enqueue pc
+seekAddr($80A497)
+	jsl hack_g25s00_map
+	    nop;nop
+	nop;nop;nop
+	nop;nop;nop
+dequeue pc
+hack_g25s00_map:
+	macro_g25s00(tbl_g25s00_map)
+
+tbl_g25s00_map:
+	dl ep1_map1, ep2_map1, ep3_map1, $89B800
+
+enqueue pc
+seekAddr($80A4B4)
+	jsl hack_g25s00_chr
+	    nop;nop
+	nop;nop;nop
+	nop;nop;nop
+dequeue pc
+hack_g25s00_chr:
+	macro_g25s00(tbl_g25s00_chr)
+
+tbl_g25s00_chr:
+	dl ep1_chr2, ep2_chr2, ep3_chr2, $878000
+
+enqueue pc
+seekAddr($80A4F3)
+	jsl hack_g25s00_pal
+	    nop;nop
+	nop;nop;nop
+	nop;nop;nop
+dequeue pc
+hack_g25s00_pal:
+	macro_g25s00(tbl_g25s00_pal)
+
+tbl_g25s00_pal:
+	dl ep1_pal2, ep2_pal2, ep3_pal2, $89EE00
