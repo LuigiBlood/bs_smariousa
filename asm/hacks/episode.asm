@@ -90,19 +90,7 @@ seekAddr($B98000); insert ep4_chr3,"../../roms/bs_supermariousa_ep4.bs",0x78000,
 dequeue pc
 
 //Hijack Episode Intro 3rd image Address Upload
-//Sub Game Mode $10
-enqueue pc
-seekAddr($80A2BF)	//Tilemap
-	jsl hack_g02s0A_map
-	    nop;nop;
-	nop;nop;
-	nop;nop;nop
-	//lda.w $A295,x	3
-	//sta.w A1T0L	3
-	//ldy.b #$89	2
-	//sty.w A1B0	3
-dequeue pc
-
+//Game Mode $02-$0A
 inline macro_g02s0A(tbl_a, tbl_b) {
 	cpx.b #3*2
 	bne +
@@ -120,6 +108,17 @@ inline macro_g02s0A(tbl_a, tbl_b) {
 +;	
 }
 
+enqueue pc
+seekAddr($80A2BF)	//Tilemap
+	jsl hack_g02s0A_map
+	    nop;nop;
+	nop;nop;
+	nop;nop;nop
+	//lda.w $A295,x	3
+	//sta.w A1T0L	3
+	//ldy.b #$89	2
+	//sty.w A1B0	3
+dequeue pc
 hack_g02s0A_map:
 	macro_g02s0A(tbl_g02s0A_map_a, tbl_g02s0A_map_b)
 	//Original Addr $899800
