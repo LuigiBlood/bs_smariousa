@@ -102,22 +102,28 @@ seekAddr($80A2BF)	//Tilemap
 	//ldy.b #$89	2
 	//sty.w A1B0	3
 dequeue pc
-hack_g02s0A_map:
+
+inline macro_g02s0A(tbl_a, tbl_b) {
 	cpx.b #3*2
 	bne +
-	//Original Addr $899800
 	phx
 	lda.l $706000
 	asl
 	tax
-	lda.l tbl_g02s0A_map_a,x
+	lda.l {tbl_a},x
 	sta.w A1T0L
-	lda.l tbl_g02s0A_map_b,x
+	lda.l {tbl_b},x
 	tay
 	sty.w A1B0
 	plx
 	rtl
-+;	lda.w $A295,x
++;	
+}
+
+hack_g02s0A_map:
+	macro_g02s0A(tbl_g02s0A_map_a, tbl_g02s0A_map_b)
+	//Original Addr $899800
+	lda.w $A295,x
 	sta.w A1T0L
 	ldy.b #$89
 	sty.w A1B0
@@ -141,21 +147,9 @@ seekAddr($80A2DB)	//Graphics
 	//sty.w A1B0
 dequeue pc
 hack_g02s0A_chr:
-	cpx.b #3*2
-	bne +
+	macro_g02s0A(tbl_g02s0A_chr_a, tbl_g02s0A_chr_b)
 	//Original Addr $8E8000
-	phx
-	lda.l $706000
-	asl
-	tax
-	lda.l tbl_g02s0A_chr_a,x
-	sta.w A1T0L
-	lda.l tbl_g02s0A_chr_b,x
-	tay
-	sty.w A1B0
-	plx
-	rtl
-+;	lda.w #$8000
+	lda.w #$8000
 	sta.w A1T0L
 	lda.w $A29D,x
 	tay
@@ -180,21 +174,9 @@ seekAddr($80A2FF)	//Palette
 	//sty.w A1B0
 dequeue pc
 hack_g02s0A_pal:
-	cpx.b #3*2
-	bne +
+	macro_g02s0A(tbl_g02s0A_pal_a, tbl_g02s0A_pal_b)
 	//Original Addr $89FC00
-	phx
-	lda.l $706000
-	asl
-	tax
-	lda.l tbl_g02s0A_pal_a,x
-	sta.w A1T0L
-	lda.l tbl_g02s0A_pal_b,x
-	tay
-	sty.w A1B0
-	plx
-	rtl
-+;	lda.w $A2A5,x
+	lda.w $A2A5,x
 	sta.w A1T0L
 	ldy.b #$89
 	sty.w A1B0
