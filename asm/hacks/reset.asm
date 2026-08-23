@@ -10,3 +10,14 @@ seekAddr($80F999)
 	bne -
 	jml $00FFA5
 dequeue pc
+
+//Skip Nintendo & St.GIGA presents screen (g02s01)
+enqueue pc
+//g02s01
+seekAddr($80A17E)
+	lda.b #$01
+	sta.w $1974
+	inc.w $0602
+	inc.w $0602
+	rts
+dequeue pc
