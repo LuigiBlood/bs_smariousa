@@ -71,7 +71,7 @@ menu_loop:
 	bit.w #$0010	//Start
 	beq +
 	jmp launch_game
-+;	bit.w #$0008	//Up
++;	bit.w #$0001	//Right
 	beq +
 	sep #$20
 	lda.b #$06;	sta.w mirror_APUIO3
@@ -80,7 +80,7 @@ menu_loop:
 	and.b #$03
 	sta.l $706000
 	jmp menu_loop_after_button
-+;	bit.w #$0004	//Down
++;	bit.w #$0002	//Left
 	beq +
 	sep #$20
 	lda.b #$06;	sta.w mirror_APUIO3
