@@ -13,6 +13,7 @@ https://www.vgmuseum.com/end/bsx/a/bsmario.htm
 
 SRAM
 115400 = (Compared to 7FFFF0 and could delete all data)
+115401 = (Compared to 7FFFF1, if different then deletes all current episode data only)
 115404 = Hour?
 115406 = Level Beaten Counters
 11540E = Total Gold Mario Statues?
@@ -30,10 +31,14 @@ SRAM
 115446 = Score (*100)
 
 115464 = Episode 1 Record Golden Marios
+115468 = Episode 1 Record ???
 11546C = Episode 1 Record Score
 115474 = Episode 2 Record Golden Marios
+115478 = Episode 2 Record ???
 11547C = Episode 2 Record Score
 115484 = Episode 3 Record Golden Marios
+115488 = Episode 3 Record ???
 11548C = Episode 3 Record Score
 115494 = Episode 4 Record Golden Marios
+115498 = Episode 4 Record ???
 11549C = Episode 4 Record Score

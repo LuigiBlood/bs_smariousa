@@ -20,6 +20,17 @@ inline startDMA(variable channel) {
 	sta.w MDMAEN
 }
 
+inline uploadToWRAM(variable src, variable dst, variable size) {
+	//DMA
+	rep #$20
+	lda.w #dst
+	sta.w WMADDL
+	lda.w #dst>>8
+	sta.w WMADDM
+	setupDMA(0, src, WMDATA, size, $02)
+	startDMA(1)
+}
+
 inline uploadToCGRAM(variable src, variable dst, variable size) {
 	//DMA
 	sep #$20

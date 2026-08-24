@@ -1,8 +1,11 @@
+constant map_buffer = $7F0000
+
 allocateWRAM(oam_buffer, $220)
 allocateWRAM(pal_buffer, $200)
 
 allocateWRAM(upload_oam_flag, 2)
 allocateWRAM(upload_pal_flag, 2)
+allocateWRAM(upload_map_flag, 2)
 
 allocateWRAM(mirror_BGMODE, 1)
 allocateWRAM(mirror_BG1SC, 1)
@@ -50,11 +53,21 @@ upload_pal_buffer:
 	sta.l upload_pal_flag
 +;	rts
 
+upload_map_buffer:
+	rep #$20
+	lda.l upload_map_flag
+	beq +
+	uploadToVRAM(map_buffer, $0C00, $800)
+	rep #$20
+	lda.w #0
+	sta.l upload_map_flag
++;	rts
+
 init_ppu:
 	php
 	jsr empty_oam_buffer
 	sep #$20
-	lda.b #$00; sta.w mirror_BGMODE		//Mode 0, 8x8
+	lda.b #$01; sta.w mirror_BGMODE		//Mode 1, 8x8
 	lda.b #$0C; sta.w mirror_BG1SC		//BG1: MAP 0x0C00, 32x32
 	lda.b #$10; sta.w mirror_BG2SC		//BG1: MAP 0x1000, 32x32
 	lda.b #$14; sta.w mirror_BG3SC		//BG1: MAP 0x1400, 32x32
@@ -63,9 +76,9 @@ init_ppu:
 										//BG2: CHR 0x0000
 	lda.b #$00; sta.w mirror_BG34NBA	//BG3: CHR 0x0000
 										//BG4: CHR 0x0000
-	lda.b #$1F; sta.w mirror_TM			//Display All BGs and OBJs (Main)
-	lda.b #$1F; sta.w mirror_TS			//Display All BGs and OBJs (Sub)
-	lda.b #$00;	sta.w mirror_INIDISP
+	lda.b #$11; sta.w mirror_TM			//Display BG0 and OBJ (Main)
+	lda.b #$11; sta.w mirror_TS			//Display BG0 and OBJ (Sub)
+	lda.b #$80;	sta.w mirror_INIDISP
 
 	rep #$30
 	stz.w mirror_BG3HOFS
@@ -84,6 +97,7 @@ update_ppu:
 
 	jsr upload_pal_buffer
 	jsr upload_oam_buffer
+	jsr upload_map_buffer
 
 	sep #$20
 	lda.w mirror_BGMODE; sta.w BGMODE
