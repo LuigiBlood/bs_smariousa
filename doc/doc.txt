@@ -6,3 +6,34 @@ Reset APU
 Upload function to WRAM and restore to BS-X Town
 
 RAM $0602 - Game Mode (09 = Fade To Black to Intro, 0A = Upload Intro stuff)
+
+
+https://www.vgmuseum.com/end/bsx/a/bsmario.htm
+
+
+SRAM
+115400 = (Compared to 7FFFF0 and could delete all data)
+115404 = Hour?
+115406 = Level Beaten Counters
+11540E = Total Gold Mario Statues?
+115410 = Mushrooms
+115416 = Coins
+11541C = Extra Lives
+115420 = ?
+115422 = ?
+115424 = ?
+115426 = ?
+115428 = ?
+11542A = Gold Mario Statues
+11543E = Episode
+115440 = Cherries
+115446 = Score (*100)
+
+115464 = Episode 1 Record Golden Marios
+11546C = Episode 1 Record Score
+115474 = Episode 2 Record Golden Marios
+11547C = Episode 2 Record Score
+115484 = Episode 3 Record Golden Marios
+11548C = Episode 3 Record Score
+115494 = Episode 4 Record Golden Marios
+11549C = Episode 4 Record Score

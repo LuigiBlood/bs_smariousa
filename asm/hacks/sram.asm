@@ -86,6 +86,7 @@ seekAddr($80AFB2+1); replaceSRAMAddr() //$115406	//Bosses
 seekAddr($80B046+1); replaceSRAMAddr() //$11541C	//Extra Lives
 seekAddr($80B096+1); replaceSRAMAddr() //$115464	//?
 seekAddr($80B0A3+1); replaceSRAMAddr() //$11546C	//?
+seekAddr($80B0AD+1); replaceSRAMAddr() //$115420	//?
 seekAddr($80B0B1+1); replaceSRAMAddr() //$115468	//?
 
 seekAddr($80B45F+1); replaceSRAMAddr() //$115422
