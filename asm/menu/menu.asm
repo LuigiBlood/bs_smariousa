@@ -4,6 +4,7 @@ include "init.asm"
 include "joypad.asm"
 include "ppu.asm"
 include "apu.asm"
+include "save.asm"
 
 enqueue pc
 seekAddr($00FFA5)
@@ -70,6 +71,11 @@ menu_loop:
 	bit.w #$0010	//Start
 	beq +
 	jmp launch_game
++;	bit.w #$0020	//Select
+	beq +
+	sep #$20; lda.b #$16; sta.w mirror_APUIO3
+	jsr empty_sram
+	jmp menu_loop_after_button
 +;	bit.w #$0001	//Right
 	beq +
 	sep #$20
@@ -93,6 +99,9 @@ menu_loop_after_button:
 	jmp menu_loop
 
 launch_game:
+	sep #$20
+	lda.l $706000
+	sta.l $7FFFF0
 	jsr wait_vblank
 	jsr reset_apu
 	jsr wait_vblank
