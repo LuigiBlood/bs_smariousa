@@ -67,17 +67,15 @@ init_ppu:
 	php
 	jsr empty_oam_buffer
 	sep #$20
-	lda.b #$01; sta.w mirror_BGMODE		//Mode 1, 8x8
-	lda.b #$0C; sta.w mirror_BG1SC		//BG1: MAP 0x0C00, 32x32
-	lda.b #$10; sta.w mirror_BG2SC		//BG1: MAP 0x1000, 32x32
-	lda.b #$14; sta.w mirror_BG3SC		//BG1: MAP 0x1400, 32x32
-	lda.b #$18; sta.w mirror_BG4SC		//BG1: MAP 0x1800, 32x32
-	lda.b #$00; sta.w mirror_BG12NBA	//BG1: CHR 0x0000
-										//BG2: CHR 0x0000
-	lda.b #$00; sta.w mirror_BG34NBA	//BG3: CHR 0x0000
-										//BG4: CHR 0x0000
-	lda.b #$11; sta.w mirror_TM			//Display BG0 and OBJ (Main)
-	lda.b #$11; sta.w mirror_TS			//Display BG0 and OBJ (Sub)
+	stz.w mirror_BGMODE
+	stz.w mirror_BG1SC
+	stz.w mirror_BG2SC
+	stz.w mirror_BG3SC
+	stz.w mirror_BG4SC
+	stz.w mirror_BG12NBA
+	stz.w mirror_BG34NBA
+	stz.w mirror_TM
+	stz.w mirror_TS
 	lda.b #$80;	sta.w mirror_INIDISP
 
 	rep #$30

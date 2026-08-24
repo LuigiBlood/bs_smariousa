@@ -12,11 +12,15 @@ dequeue pc
 boot_start:
 	clc
 	xce
+	sep #$10
 	rep #$20
 	lda.w #$0000
 	tcd
 	lda.w #$1FFF
 	tcs
+	ldx.b #boot_start>>16
+	phx
+	plb
 
 	jsr initsnes
 	jsl joypad_init

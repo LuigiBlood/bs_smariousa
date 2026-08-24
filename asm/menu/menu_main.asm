@@ -5,8 +5,9 @@ menu_state00:	//upload
 	uploadToWRAM(menu_pal, pal_buffer+$100, menu_pal.size)
 	uploadToVRAM(menu_chr, $0000, menu_chr.size)
 	uploadToWRAM(menu_map, map_buffer, menu_map.size)
-	//update scores and stuff
+	//Update scores and stuff
 	jsl update_menu_records
+	
 	rep #$20
 	inc.w menu_state
 	inc.w upload_pal_flag
@@ -16,12 +17,25 @@ menu_state00:	//upload
 	lda.w #0
 	sec
 	jsl msu_play
-	
+
+	//Prep Video
 	sep #$20
+	lda.b #$01; sta.w mirror_BGMODE		//Mode 1, 8x8
+	lda.b #$0C; sta.w mirror_BG1SC		//BG1: MAP 0x0C00, 32x32
+	lda.b #$10; sta.w mirror_BG2SC		//BG1: MAP 0x1000, 32x32
+	lda.b #$14; sta.w mirror_BG3SC		//BG1: MAP 0x1400, 32x32
+	lda.b #$18; sta.w mirror_BG4SC		//BG1: MAP 0x1800, 32x32
+	lda.b #$00; sta.w mirror_BG12NBA	//BG1: CHR 0x0000
+										//BG2: CHR 0x0000
+	lda.b #$00; sta.w mirror_BG34NBA	//BG3: CHR 0x0000
+										//BG4: CHR 0x0000
+	lda.b #$11; sta.w mirror_TM			//Display BG0 and OBJ (Main)
+	lda.b #$11; sta.w mirror_TS			//Display BG0 and OBJ (Sub)
+
 	stz.w mirror_INIDISP
 	rts
 
-menu_state01:	//Show screen
+menu_state01:	//Fade In
 	sep #$20
 	lda.w mirror_INIDISP
 	cmp.b #$0F
@@ -38,7 +52,7 @@ menu_state02:	//Control
 	//Button Check
 	rep #$20
 	lda.w joypad1_push
-	bit.w #$0010	//Start
+	bit.w #$8010	//Start or A
 	beq +
 	inc.w menu_state
 +;	bit.w #$0008	//Up
@@ -63,7 +77,7 @@ menu_state02_after:
 	sep #$30
 	lda.b #$28;	sta.w oam_buffer+0
 	ldx.w menu_select
-	lda.l tbl_y_menu_state02,x
+	lda.w tbl_y_menu_state02,x
 	sta.w oam_buffer+1
 	lda.b #$01;	sta.w oam_buffer+2
 	stz.w oam_buffer+3
@@ -77,17 +91,20 @@ menu_state03:
 	lda.w menu_select
 	cmp.w #4
 	bne +
+	//Erase Data is selected, erase data and go back to selection
 	sep #$20; lda.b #$16; sta.w mirror_APUIO3
 	jsr empty_sram
 	jsl update_menu_records
 	dec.w menu_state
 	rts
-+;	sta.l $706000
-	inc.w menu_state
+	//Episodes are selected, start episode
++;	sep #$20
+	sta.l $706000
 	lda.b #$01;	sta.w mirror_APUIO3
+	inc.w menu_state
 	rts
 
-menu_state04:	//Fade to black
+menu_state04:	//Fade Out
 	sep #$20
 	lda.w mirror_INIDISP
 	cmp.b #$00
@@ -103,14 +120,17 @@ menu_state04:	//Fade to black
 	rts
 
 launch_game:
+	//Mess with save timestamp to restart the save while keeping the episode records data
 	sep #$20
 	lda.l $701401
 	inc
 	sta.l $7FFFF1
+	//Reinit MSU and APU
 	jsl msu_init
 	jsr wait_vblank
 	jsr reset_apu
 	jsr wait_vblank
+	//Jump to main game
 	sep #$30
 	jml $808000
 
