@@ -1,4 +1,10 @@
 menu_state00:	//upload
+	//Test SRAM and erase if checksum is wrong
+	jsr sram_test
+	bcc +
+	jsr sram_erase
++;
+
 	jsr empty_oam_buffer
 	//upload base menu graphics
 	uploadToWRAM(menu_pal_bg1, pal_buffer+$E0, menu_pal_bg1.size)
@@ -107,7 +113,7 @@ menu_state03:
 	bne +
 	//Erase Data is selected, erase data and go back to selection
 	sep #$20; lda.b #$16; sta.w mirror_APUIO3
-	jsr empty_sram
+	jsr sram_erase
 	jsl update_menu_records
 	dec.w menu_state
 	rts
