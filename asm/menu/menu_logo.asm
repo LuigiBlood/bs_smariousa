@@ -1,4 +1,4 @@
-logo_state00:
+state_logo_init:
 	jsr empty_oam_buffer
 	uploadToWRAM($80A01E, pal_buffer+$120, $40)
 	uploadToVRAM($9B8000, $6600, 0x1400)
@@ -11,7 +11,7 @@ logo_state00:
 	inc.w menu_state
 	inc.w upload_pal_flag
 
-	lda.w #60*2; sta.w wait_counter
+	lda.w #60*1; sta.w wait_counter
 
 	sep #$20
 	lda.b #$10; sta.w mirror_TM			//Display BG1&2 and OBJ (Main)
@@ -21,12 +21,13 @@ logo_state00:
 	stz.w mirror_INIDISP
 	rts
 
-logo_state01:
+state_logo_sfx:
 	rep #$20
-	dec.w wait_counter
-	bpl +
+	lda.w #60*1; sta.w wait_counter
 	inc.w menu_state
-+;	rts
+	sep #$20
+	lda.b #$01;	sta.w mirror_APUIO3
+	rts
 
 logo_oam_tbl2:
 	db $AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$0A

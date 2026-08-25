@@ -75,5 +75,5 @@ menu_loop:
 	jmp menu_loop
 
 tbl_menu_state_code:
-	dw logo_state00, menu_state01, logo_state01, menu_state04
-	dw menu_state00, menu_state01, menu_state02, menu_state03, menu_state04, launch_game
+	dw state_logo_init, state_fadein, state_wait, state_logo_sfx, state_wait, state_fadeout
+	dw state_mainmenu_init, state_fadein, state_mainmenu_loop, state_mainmenu_process, state_fadeout, state_launch_game

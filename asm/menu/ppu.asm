@@ -130,3 +130,13 @@ update_ppu:
 
 	plp
 	rts
+
+wait_vblank:
+	php
+	sep #$20
+-;	lda.l HVBJOY
+	bmi -
+-;	lda.l HVBJOY
+	bpl -
+	plp
+	rts
