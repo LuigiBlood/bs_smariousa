@@ -1,3 +1,10 @@
-insert menu_pal,"../../gfx/work/test.pal"
-insert menu_chr,"../../gfx/work/test.chr"
-insert menu_map,"../../gfx/work/test.map"
+//insert menu_pal,"../../gfx/work/test.pal"
+//insert menu_chr,"../../gfx/work/test.chr"
+//insert menu_map,"../../gfx/work/test.map"
+insert menu_pal_bg1,"../../gfx/work/bg1_jp.pal"
+insert menu_chr_bg1,"../../gfx/work/bg1_jp.chr"
+insert menu_map_bg1,"../../gfx/work/bg1_jp.map"
+
+insert menu_pal_bg2,"../../gfx/work/bg2.pal"
+insert menu_chr_bg2,"../../gfx/work/bg2.chr"
+insert menu_map_bg2,"../../gfx/work/bg2.map"

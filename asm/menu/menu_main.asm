@@ -1,10 +1,13 @@
 menu_state00:	//upload
 	jsr empty_oam_buffer
 	//upload base menu
-	uploadToWRAM(menu_pal, pal_buffer, menu_pal.size)
-	uploadToWRAM(menu_pal, pal_buffer+$100, menu_pal.size)
-	uploadToVRAM(menu_chr, $0000, menu_chr.size)
-	uploadToWRAM(menu_map, map_buffer, menu_map.size)
+	uploadToWRAM(menu_pal_bg1, pal_buffer+$E0, menu_pal_bg1.size)
+	uploadToWRAM(menu_pal_bg2, pal_buffer, menu_pal_bg2.size)
+	uploadToWRAM(menu_pal_bg1, pal_buffer+$100, menu_pal_bg1.size)
+	uploadToVRAM(menu_chr_bg1, $0000, menu_chr_bg1.size)
+	uploadToVRAM(menu_chr_bg2, $1000, menu_chr_bg2.size)
+	uploadToWRAM(menu_map_bg1, map_buffer, menu_map_bg1.size)
+	uploadToVRAM(menu_map_bg2, $3000, menu_map_bg2.size)
 	//Update scores and stuff
 	jsl update_menu_records
 	
@@ -21,16 +24,17 @@ menu_state00:	//upload
 	//Prep Video
 	sep #$20
 	lda.b #$01; sta.w mirror_BGMODE		//Mode 1, 8x8
-	lda.b #$0C; sta.w mirror_BG1SC		//BG1: MAP 0x0C00, 32x32
-	lda.b #$10; sta.w mirror_BG2SC		//BG1: MAP 0x1000, 32x32
-	lda.b #$14; sta.w mirror_BG3SC		//BG1: MAP 0x1400, 32x32
-	lda.b #$18; sta.w mirror_BG4SC		//BG1: MAP 0x1800, 32x32
-	lda.b #$00; sta.w mirror_BG12NBA	//BG1: CHR 0x0000
-										//BG2: CHR 0x0000
+	lda.b #$20; sta.w mirror_BG1SC		//BG1: MAP 0x2000, 32x32
+	lda.b #$30; sta.w mirror_BG2SC		//BG2: MAP 0x3000, 32x32
+	lda.b #$00; sta.w mirror_BG3SC		//BG3: MAP 0x0000, 32x32
+	lda.b #$00; sta.w mirror_BG4SC		//BG4: MAP 0x0000, 32x32
+	lda.b #$10; sta.w mirror_BG12NBA	//BG1: CHR 0x0000
+										//BG2: CHR 0x1000
 	lda.b #$00; sta.w mirror_BG34NBA	//BG3: CHR 0x0000
 										//BG4: CHR 0x0000
-	lda.b #$11; sta.w mirror_TM			//Display BG0 and OBJ (Main)
-	lda.b #$11; sta.w mirror_TS			//Display BG0 and OBJ (Sub)
+	lda.b #$13; sta.w mirror_TM			//Display BG1&2 and OBJ (Main)
+	lda.b #$11; sta.w mirror_TS			//Display BG1 and OBJ (Sub)
+	lda.b #$00; sta.w mirror_OBSEL		//OBJ
 
 	stz.w mirror_INIDISP
 	rts
@@ -80,7 +84,7 @@ menu_state02_after:
 	lda.w tbl_y_menu_state02,x
 	sta.w oam_buffer+1
 	lda.b #$01;	sta.w oam_buffer+2
-	stz.w oam_buffer+3
+	lda.b #$30;	sta.w oam_buffer+3
 	rts
 
 tbl_y_menu_state02:
@@ -154,10 +158,10 @@ inline macro_draw_numbers(addr, v_addr, digits) {
 update_menu_records:
 	php
 	rep #$30
-	macro_draw_numbers($701464, $016A*2, 2)
-	macro_draw_numbers($701474, $01CA*2, 2)
-	macro_draw_numbers($701484, $022A*2, 2)
-	macro_draw_numbers($701494, $028A*2, 2)
+	macro_draw_numbers($701464, $014A*2+20, 2)
+	macro_draw_numbers($701474, $01AA*2+20, 2)
+	macro_draw_numbers($701484, $020A*2+20, 2)
+	macro_draw_numbers($701494, $026A*2+20, 2)
 	macro_draw_numbers($70146C, $016A*2+26, 5)
 	macro_draw_numbers($70147C, $01CA*2+26, 5)
 	macro_draw_numbers($70148C, $022A*2+26, 5)
@@ -178,6 +182,7 @@ draw_numbers:
 	nop;nop;nop;nop;nop;nop
 	lda.w RDMPYL
 	inc
+	ora.w #$1C00
 	sta.l map_buffer,x
 	lda.w RDDIVL
 	dex; dex

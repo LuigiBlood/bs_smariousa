@@ -19,6 +19,7 @@ allocateWRAM(mirror_TS, 1)
 allocateWRAM(mirror_INIDISP, 1)
 allocateWRAM(mirror_BG3HOFS, 2)
 allocateWRAM(mirror_BG3VOFS, 2)
+allocateWRAM(mirror_OBSEL, 1)
 
 empty_oam_buffer:
 	php
@@ -57,7 +58,7 @@ upload_map_buffer:
 	rep #$20
 	lda.l upload_map_flag
 	beq +
-	uploadToVRAM(map_buffer, $0C00, $800)
+	uploadToVRAM(map_buffer, $2000, $800)
 	rep #$20
 	lda.w #0
 	sta.l upload_map_flag
@@ -76,6 +77,7 @@ init_ppu:
 	stz.w mirror_BG34NBA
 	stz.w mirror_TM
 	stz.w mirror_TS
+	stz.w mirror_OBSEL
 	lda.b #$80;	sta.w mirror_INIDISP
 
 	rep #$30
@@ -107,6 +109,7 @@ update_ppu:
 	lda.w mirror_BG34NBA; sta.w BG34NBA
 	lda.w mirror_TM; sta.w TM
 	lda.w mirror_TS; sta.w TS
+	lda.w mirror_OBSEL; sta.w OBSEL
 
 	rep #$20; lda.w mirror_BG3HOFS
 	sep #$20; sta.w BG3HOFS

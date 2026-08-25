@@ -1,4 +1,5 @@
 allocateWRAM(frame_counter, 2)
+allocateWRAM(wait_counter, 2)
 
 allocateWRAM(menu_state, 2)
 allocateWRAM(menu_select, 2)
@@ -74,4 +75,5 @@ menu_loop:
 	jmp menu_loop
 
 tbl_menu_state_code:
+	dw logo_state00, menu_state01, logo_state01, menu_state04
 	dw menu_state00, menu_state01, menu_state02, menu_state03, menu_state04, launch_game
