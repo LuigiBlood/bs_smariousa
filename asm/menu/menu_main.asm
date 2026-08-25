@@ -22,12 +22,12 @@ state_mainmenu_init:	//upload
 	uploadToWRAM(menu_pal_icons, pal_buffer+$120, menu_pal_icons.size)
 	uploadToWRAM(menu_pal_icons, pal_buffer+$140, menu_pal_icons.size)
 	uploadToVRAM(menu_chr_icons, $6100, menu_chr_icons.size)
-	uploadToWRAM(menu_oam_icons, oam_buffer+$4, menu_oam_icons_end-menu_oam_icons)
+	uploadToWRAM(menu_oam_icons, oam_buffer+$4, menu_oam_icons_size)
 
 	uploadToWRAM(menu_pal_obj_logo_jp, pal_buffer+$1E0, menu_pal_obj_logo_jp.size)
 	uploadToVRAM(menu_chr_obj_logo_jp, $6300, menu_chr_obj_logo_jp.size)
-	uploadToWRAM(menu_oam_obj_logo_jp, oam_buffer+$4+menu_oam_icons_end-menu_oam_icons, menu_oam_obj_logo_jp_end-menu_oam_obj_logo_jp)
-	uploadToWRAM(menu_oam_obj_logo_jp_2, oam_buffer+$200, menu_oam_obj_logo_jp_2_end-menu_oam_obj_logo_jp_2)
+	uploadToWRAM(menu_oam_obj_logo, oam_buffer+$4+menu_oam_icons_size, menu_oam_obj_logo_size)
+	uploadToWRAM(menu_oam_obj_menu, oam_buffer+$200, menu_oam_obj_menu_size)
 	//Update scores and stuff
 	jsl update_menu_records
 	
