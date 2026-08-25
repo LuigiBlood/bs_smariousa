@@ -16,7 +16,7 @@ logo_state00:
 	sep #$20
 	lda.b #$10; sta.w mirror_TM			//Display BG1&2 and OBJ (Main)
 	lda.b #$10; sta.w mirror_TS			//Display BG1 and OBJ (Sub)
-	lda.b #$03; sta.w mirror_OBSEL		//OBJ
+	lda.b #$03; sta.w mirror_OBSEL		//OBJ: CHR 0xC000
 
 	stz.w mirror_INIDISP
 	rts

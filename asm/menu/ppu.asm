@@ -24,9 +24,16 @@ allocateWRAM(mirror_OBSEL, 1)
 empty_oam_buffer:
 	php
 	rep #$30
-	lda.w #$E0E0
-	ldx.w #$021E
--;	sta.w oam_buffer,x
+	lda.w #$F000
+	ldx.w #$0200-2
+-;	stz.w oam_buffer,x
+	dex; dex
+	sta.w oam_buffer,x
+	dex; dex
+	bpl -
+
+	ldx.w #$0020-2
+-;	stz.w oam_buffer+$200,x
 	dex; dex
 	bpl -
 	plp

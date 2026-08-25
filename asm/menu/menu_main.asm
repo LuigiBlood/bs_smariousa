@@ -1,13 +1,27 @@
 menu_state00:	//upload
 	jsr empty_oam_buffer
-	//upload base menu
+	//upload base menu graphics
 	uploadToWRAM(menu_pal_bg1, pal_buffer+$E0, menu_pal_bg1.size)
-	uploadToWRAM(menu_pal_bg2, pal_buffer, menu_pal_bg2.size)
-	uploadToWRAM(menu_pal_bg1, pal_buffer+$100, menu_pal_bg1.size)
 	uploadToVRAM(menu_chr_bg1, $0000, menu_chr_bg1.size)
-	uploadToVRAM(menu_chr_bg2, $1000, menu_chr_bg2.size)
 	uploadToWRAM(menu_map_bg1, map_buffer, menu_map_bg1.size)
+	uploadToWRAM(menu_map_empty, map_buffer, menu_map_empty_end-menu_map_empty)
+
+	uploadToWRAM(menu_pal_bg2, pal_buffer, menu_pal_bg2.size)
+	uploadToVRAM(menu_chr_bg2, $1000, menu_chr_bg2.size)
 	uploadToVRAM(menu_map_bg2, $3000, menu_map_bg2.size)
+
+	uploadToWRAM($85C991, pal_buffer+$100, $20)
+	uploadToVRAM($99F5C0, $6000, $20)
+
+	uploadToWRAM(menu_pal_icons, pal_buffer+$120, menu_pal_icons.size)
+	uploadToWRAM(menu_pal_icons, pal_buffer+$140, menu_pal_icons.size)
+	uploadToVRAM(menu_chr_icons, $6100, menu_chr_icons.size)
+	uploadToWRAM(menu_oam_icons, oam_buffer+$4, menu_oam_icons_end-menu_oam_icons)
+
+	uploadToWRAM(menu_pal_obj_logo_jp, pal_buffer+$1E0, menu_pal_obj_logo_jp.size)
+	uploadToVRAM(menu_chr_obj_logo_jp, $6300, menu_chr_obj_logo_jp.size)
+	uploadToWRAM(menu_oam_obj_logo_jp, oam_buffer+$4+menu_oam_icons_end-menu_oam_icons, menu_oam_obj_logo_jp_end-menu_oam_obj_logo_jp)
+	uploadToWRAM(menu_oam_obj_logo_jp_2, oam_buffer+$200, menu_oam_obj_logo_jp_2_end-menu_oam_obj_logo_jp_2)
 	//Update scores and stuff
 	jsl update_menu_records
 	
@@ -26,15 +40,11 @@ menu_state00:	//upload
 	lda.b #$01; sta.w mirror_BGMODE		//Mode 1, 8x8
 	lda.b #$20; sta.w mirror_BG1SC		//BG1: MAP 0x2000, 32x32
 	lda.b #$30; sta.w mirror_BG2SC		//BG2: MAP 0x3000, 32x32
-	lda.b #$00; sta.w mirror_BG3SC		//BG3: MAP 0x0000, 32x32
-	lda.b #$00; sta.w mirror_BG4SC		//BG4: MAP 0x0000, 32x32
 	lda.b #$10; sta.w mirror_BG12NBA	//BG1: CHR 0x0000
 										//BG2: CHR 0x1000
-	lda.b #$00; sta.w mirror_BG34NBA	//BG3: CHR 0x0000
-										//BG4: CHR 0x0000
 	lda.b #$13; sta.w mirror_TM			//Display BG1&2 and OBJ (Main)
-	lda.b #$11; sta.w mirror_TS			//Display BG1 and OBJ (Sub)
-	lda.b #$00; sta.w mirror_OBSEL		//OBJ
+	lda.b #$00; sta.w mirror_TS			//Display BG1 and OBJ (Sub)
+	lda.b #$03; sta.w mirror_OBSEL		//OBJ: CHR 0x6000
 
 	stz.w mirror_INIDISP
 	rts
@@ -83,12 +93,12 @@ menu_state02_after:
 	ldx.w menu_select
 	lda.w tbl_y_menu_state02,x
 	sta.w oam_buffer+1
-	lda.b #$01;	sta.w oam_buffer+2
+	lda.b #$00;	sta.w oam_buffer+2
 	lda.b #$30;	sta.w oam_buffer+3
 	rts
 
 tbl_y_menu_state02:
-	db $50-1,$68-1,$80-1,$98-1,$B0-1
+	db $50-1+3,$68-1+3,$80-1+3,$98-1+3,$B0-1
 
 menu_state03:
 	rep #$20
