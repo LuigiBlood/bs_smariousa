@@ -1,1 +1,1 @@
-".\tools\mesen\Mesen" ".\out\bs_supermariousa_combo.sfc"
+".\tools\mesen\Mesen" ".\out\bs_supermariousa_combo_en.sfc"

@@ -8,7 +8,7 @@ include "./inc/snes_dma.inc"
 include "./inc/snes_msu1.inc"
 include "./inc/macros_lorom.inc"
 
-output "./out/bs_supermariousa_combo.sfc", create
+output "./out/bs_supermariousa_combo_jp.sfc", create
 seekFile(0); fill $200000,$FF
 seekFile(0); insert "./roms/bs_supermariousa_ep1.bs"
 
