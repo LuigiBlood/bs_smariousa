@@ -1,9 +1,9 @@
 
 //How many frames is a minute (60 * 60 = 3600 frames)
-//However it doesn't necessarily take into account the slight 
+//However a full frame is actually 60.09880627 Hz on real hardware, so that times 60 = 3606
 enqueue pc
 seekAddr($80F982)
-	lda.w #3615
+	lda.w #3606
 dequeue pc
 
 //Change Hour and Minute (At Boot) (Original Code: 18:05)
