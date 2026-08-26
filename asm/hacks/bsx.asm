@@ -8,3 +8,16 @@ seekAddr($809ED0)
 	plp
 	rtl
 dequeue pc
+
+//Remove use of Satellaview hardware
+enqueue pc
+seekAddr($808051)
+	nop;nop;nop
+	nop;nop
+	nop;nop;nop
+
+seekAddr($809BE4)
+	nop;nop;nop
+	nop;nop;nop;nop
+	nop;nop
+dequeue pc
