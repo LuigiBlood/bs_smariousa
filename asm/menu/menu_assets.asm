@@ -1,19 +1,10 @@
-//insert menu_pal,"../../gfx/work/test.pal"
-//insert menu_chr,"../../gfx/work/test.chr"
-//insert menu_map,"../../gfx/work/test.map"
-insert menu_pal_bg1,"../../gfx/temp/bg1_jp.pal"
-insert menu_chr_bg1,"../../gfx/temp/bg1_jp.chr"
-insert menu_map_bg1,"../../gfx/temp/bg1_jp.map"
-
+//General Assets
 insert menu_pal_bg2,"../../gfx/temp/bg2.pal"
 insert menu_chr_bg2,"../../gfx/temp/bg2.chr"
 insert menu_map_bg2,"../../gfx/temp/bg2.map"
 
 insert menu_pal_icons,"../../gfx/temp/icons.pal"
 insert menu_chr_icons,"../../gfx/temp/icons.chr"
-
-insert menu_pal_obj_logo_jp,"../../gfx/temp/obj_logo_jp.pal"
-insert menu_chr_obj_logo_jp,"../../gfx/temp/obj_logo_jp.chr"
 
 menu_oam_icons:
 db $86,$4E+(8*0)-8,$10,$32, $86,$4E+(8*0)+1,$12,$32

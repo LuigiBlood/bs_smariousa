@@ -24,8 +24,8 @@ state_mainmenu_init:	//upload
 	uploadToVRAM(menu_chr_icons, $6100, menu_chr_icons.size)
 	uploadToWRAM(menu_oam_icons, oam_buffer+$4, menu_oam_icons_size)
 
-	uploadToWRAM(menu_pal_obj_logo_jp, pal_buffer+$1E0, menu_pal_obj_logo_jp.size)
-	uploadToVRAM(menu_chr_obj_logo_jp, $6300, menu_chr_obj_logo_jp.size)
+	uploadToWRAM(menu_pal_obj_logo, pal_buffer+$1E0, menu_pal_obj_logo.size)
+	uploadToVRAM(menu_chr_obj_logo, $6300, menu_chr_obj_logo.size)
 	uploadToWRAM(menu_oam_obj_logo, oam_buffer+$4+menu_oam_icons_size, menu_oam_obj_logo_size)
 	uploadToWRAM(menu_oam_obj_menu, oam_buffer+$200, menu_oam_obj_menu_size)
 	//Update scores and stuff
