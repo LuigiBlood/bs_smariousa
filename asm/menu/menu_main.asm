@@ -4,6 +4,16 @@ state_mainmenu_init:	//upload
 	bcc +
 	jsr sram_erase
 +;
+	//Hold Button Combo to Erase SRAM
+	rep #$20
+	lda.w joypad1_hold
+	and.w #$FFF0
+	cmp.w #$7000	//L+R+X
+	//cmp.w #$C0F0	//A+B+X+Y+Select+Start (BS-X)
+	bne +
+	sep #$20; lda.b #$16; sta.w mirror_APUIO3
+	jsr sram_erase
++;
 
 	jsr empty_oam_buffer
 	//upload base menu graphics
@@ -74,7 +84,7 @@ state_mainmenu_loop:	//Control
 	beq ++
 	sep #$20
 	lda.w menu_select
-	cmp.b #4
+	cmp.b #3
 	bcs +
 	inc.w menu_select
 	lda.b #$06;	sta.w mirror_APUIO3
