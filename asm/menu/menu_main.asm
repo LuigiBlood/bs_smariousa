@@ -49,7 +49,7 @@ state_mainmenu_init:	//upload
 	lda.b #$10; sta.w mirror_BG12NBA	//BG1: CHR 0x0000
 										//BG2: CHR 0x1000
 	lda.b #$13; sta.w mirror_TM			//Display BG1&2 and OBJ (Main)
-	lda.b #$00; sta.w mirror_TS			//Display BG1 and OBJ (Sub)
+	lda.b #$00; sta.w mirror_TS			//Display None (Sub)
 	lda.b #$03; sta.w mirror_OBSEL		//OBJ: CHR 0x6000
 
 	stz.w mirror_INIDISP

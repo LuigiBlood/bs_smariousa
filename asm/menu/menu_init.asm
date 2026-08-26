@@ -76,4 +76,5 @@ menu_loop:
 
 tbl_menu_state_code:
 	dw state_logo_init, state_fadein, state_wait, state_logo_sfx, state_wait, state_fadeout
+	dw state_msu1_init, state_fadein, state_wait, state_fadeout
 	dw state_mainmenu_init, state_fadein, state_mainmenu_loop, state_mainmenu_process, state_fadeout, state_launch_game

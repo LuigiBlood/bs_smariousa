@@ -11,11 +11,11 @@ state_logo_init:
 	inc.w menu_state
 	inc.w upload_pal_flag
 
-	lda.w #60*1; sta.w wait_counter
+	lda.w #30; sta.w wait_counter		//wait 0.5 second
 
 	sep #$20
-	lda.b #$10; sta.w mirror_TM			//Display BG1&2 and OBJ (Main)
-	lda.b #$10; sta.w mirror_TS			//Display BG1 and OBJ (Sub)
+	lda.b #$10; sta.w mirror_TM			//Display only OBJ (Main)
+	lda.b #$10; sta.w mirror_TS			//Display only OBJ (Sub)
 	lda.b #$03; sta.w mirror_OBSEL		//OBJ: CHR 0xC000
 
 	stz.w mirror_INIDISP
@@ -23,7 +23,7 @@ state_logo_init:
 
 state_logo_sfx:
 	rep #$20
-	lda.w #60*1; sta.w wait_counter
+	lda.w #60+30; sta.w wait_counter		//wait 1.5 second
 	inc.w menu_state
 	sep #$20
 	lda.b #$01;	sta.w mirror_APUIO3

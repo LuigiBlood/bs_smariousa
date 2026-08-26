@@ -4,6 +4,8 @@ echo - en/bg1_en.png
 "./tools/conv/superfamiconv.exe" -i "./gfx/en/bg1_en.png" -p "./gfx/temp/bg1_en.pal" -t "./gfx/temp/bg1_en.chr" -m "./gfx/temp/bg1_en.map" -P 7
 echo - bg2.png
 "./tools/conv/superfamiconv.exe" -i "./gfx/bg2.png" -p "./gfx/temp/bg2.pal" -t "./gfx/temp/bg2.chr" -m "./gfx/temp/bg2.map"
+echo - msu1.png
+"./tools/conv/superfamiconv.exe" -i "./gfx/msu1.png" -p "./gfx/temp/msu1.pal" -t "./gfx/temp/msu1.chr" -m "./gfx/temp/msu1.map"
 echo - icons.png
 "./tools/conv/superfamiconv.exe" -i "./gfx/icons.png" -p "./gfx/temp/icons.pal" -t "./gfx/temp/icons.chr" -S -W 16 -H 16
 echo - en/obj_logo_en.png
