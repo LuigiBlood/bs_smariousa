@@ -44,7 +44,6 @@ boot_start:
 menu_init:
 	rep #$30
 	stz.w frame_counter
-	stz.w menu_state
 	stz.w menu_select
 	lda.w #0
 	sta.l $706000
@@ -56,6 +55,21 @@ menu_init:
 	sta.l $7FFFFA
 	sta.l $7FFFFC
 	sta.l $7FFFFE
+
+	//Skip to Main Menu if $7FF000 = "SKIP"
+	ldx.w #0
+	lda.l $7FF000
+	cmp.w #$4B53
+	bne +
+	lda.l $7FF002
+	cmp.w #$5049
+	bne +
+	ldx.w #state_mainmenu
+
++;	stx.w menu_state
+	lda.w #0
+	sta.l $7FF000
+	sta.l $7FF002
 	rts
 
 menu_loop:
@@ -77,4 +91,7 @@ menu_loop:
 tbl_menu_state_code:
 	dw state_logo_init, state_fadein, state_wait, state_logo_sfx, state_wait, state_fadeout
 	dw state_msu1_init, state_fadein, state_wait, state_fadeout
+tbl_menu_state_code_main:
 	dw state_mainmenu_init, state_fadein, state_mainmenu_loop, state_mainmenu_process, state_fadeout, state_launch_game
+
+constant state_mainmenu = (tbl_menu_state_code_main-tbl_menu_state_code)/2

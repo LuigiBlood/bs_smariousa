@@ -8,6 +8,10 @@ seekAddr($80F999)
 	lda.w #$BBAA
 -;	cmp.l APUIO0
 	bne -
+	//write "SKIP" to RAM
+	lda.w #$4B53; sta.l $7FF000
+	lda.w #$5049; sta.l $7FF002
+
 	jml $00FFA5
 dequeue pc
 
