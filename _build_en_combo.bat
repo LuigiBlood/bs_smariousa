@@ -32,6 +32,9 @@ rem "./tools/conv/superfamiconv.exe" -i "./gfx/en/ep4.png" -p "./gfx/temp/ep4_en
 "./tools/conv/superfamiconv.exe" map -i "./gfx/en/ep4.png" -p "./gfx/temp/ep4_en.pal" -t "./gfx/temp/ep4_en.chr" -d "./gfx/temp/ep4_en.map" -B 4 -P 1
 echo - en/the_end.png
 "./tools/conv/superfamiconv.exe" -i "./gfx/en/the_end.png" -p "./gfx/temp/the_end_en.pal" -t "./gfx/temp/the_end_en.chr" -m "./gfx/temp/the_end_en.map" -B 4 --color-zero 000000
+echo - en/controls_text.png
+"./tools/conv/superfamiconv.exe" tiles -i "./gfx/en/controls_text.png" -p "./gfx/en/controls.pal" -d "./gfx/temp/controls_text.chr" -B 4 -W 16 -H 16
+"./tools/conv/superfamiconv.exe" map -i "./gfx/en/controls_text.png" -p "./gfx/en/controls.pal" -t "./gfx/temp/controls_text.chr" -d "./gfx/temp/controls_text.map" -B 4 -P 2 -T 352
 "./tools/bass/bass" build_en_combo.asm
 echo Done.
 pause
