@@ -8,6 +8,32 @@ insert menu_chr_obj_logo,"../gfx/temp/obj_logo_en.chr"
 
 //Include all graphics
 enqueue pc
+seekAddr($81E706)	//Type A (JUMP)
+db $01,$76,$00,$07
+db $BD,$08,$BD,$08,$BD,$08,$BD,$08
+db $01,$96,$00,$07
+db $09,$09,$0A,$09,$0B,$09,$BD,$08
+db $01,$B6,$00,$09
+db $BD,$08,$BD,$08,$BD,$08,$BD,$08,$BD,$08
+db $01,$F1,$00,$03
+db $44,$09,$45,$09
+db $FF
+
+seekAddr($81E735)	//Type B (DASH, PICK UP)
+db $01,$76,$00,$07
+db $BD,$08,$BD,$08,$BD,$08,$BD,$08
+db $01,$96,$00,$07
+db $55,$09,$56,$09,$57,$09,$58,$09
+db $01,$B6,$00,$09
+db $06,$09,$07,$09,$08,$09,$BD,$08,$BD,$08
+db $01,$F1,$00,$03
+db $46,$09,$47,$09
+db $FF
+
+seekAddr($89A800); insert "../gfx/en/controls.map"
+seekAddr($99A800); insert "../gfx/en/controls.chr"
+
+
 seekAddr($B08000)
 insert ep1_pal_title,"../roms/bs_supermariousa_ep1.bs",0x4FC00,0x20; insert "../gfx/temp/ep1_en.pal"
 insert ep2_pal_title,"../roms/bs_supermariousa_ep2.bs",0x4FC00,0x20; insert "../gfx/temp/ep2_en.pal"
