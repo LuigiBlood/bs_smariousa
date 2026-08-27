@@ -1,5 +1,6 @@
 @echo off
-echo Assembling Combo Version... (English Version)
+echo Building Combo Version... (English Version)
+echo -- Graphics
 echo - en/bg1_en.png
 "./tools/conv/superfamiconv.exe" -i "./gfx/en/bg1_en.png" -p "./gfx/temp/bg1_en.pal" -t "./gfx/temp/bg1_en.chr" -m "./gfx/temp/bg1_en.map" -P 7
 echo - bg2.png
@@ -35,6 +36,7 @@ echo - en/the_end.png
 echo - en/controls_text.png
 "./tools/conv/superfamiconv.exe" tiles -i "./gfx/en/controls_text.png" -p "./gfx/en/controls.pal" -d "./gfx/temp/controls_text.chr" -B 4 -W 16 -H 16
 "./tools/conv/superfamiconv.exe" map -i "./gfx/en/controls_text.png" -p "./gfx/en/controls.pal" -t "./gfx/temp/controls_text.chr" -d "./gfx/temp/controls_text.map" -B 4 -P 2 -T 352
+echo -- Build ROM...
 "./tools/bass/bass" build_en_combo.asm
 echo Done.
 pause
