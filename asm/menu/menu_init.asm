@@ -70,10 +70,17 @@ menu_init:
 	lda.w #0
 	sta.l $7FF000
 	sta.l $7FF002
+
+	//For fun, light up the Satellaview ACCESS LED
+	sep #$20
+	lda.b #$0C
+	sta.w $2194
+
 	rts
 
 menu_loop:
 	jsr wait_vblank
+	rep #$20
 	inc.w frame_counter
 	//Do VBlank sensitive stuff here
 	jsr update_ppu
