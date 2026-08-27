@@ -99,10 +99,21 @@ seekAddr($99A800); insert "../gfx/en/controls.chr"
 seekAddr($99B400); insert "../gfx/temp/controls_text.chr",0x000,0xC00
 seekAddr($99C800); insert "../gfx/temp/controls_text.chr",0xC00
 
-seekAddr($93C000); insert "../gfx/en/pause_menu.chr"
-
 //Change Size for last controls_text.chr part
 seekAddr($83E8E8); dw 0x0C00
+
+seekAddr($93C000); insert "../gfx/en/pause_menu.chr"
+
+seekAddr($93A000); insert "../gfx/en/stage_select.chr"
+//Rearrange Tilemap for Results & Stage Select
+seekAddr($81D41C); db $FF,$00 //db $0E,$1D
+seekAddr($81D430); db $FF,$00 //db $1E,$1D
+seekAddr($81D750); db $FF,$00 //db $0E,$1D
+seekAddr($81D772); db $FF,$00 //db $1E,$1D
+
+seekAddr($81D7B8); db $0E,$1D //db $FF,$00
+seekAddr($81D7DA); db $1E,$1D //db $FF,$00
+
 
 seekAddr($B08000)
 insert ep1_pal_title,"../roms/bs_supermariousa_ep1.bs",0x4FC00,0x20; insert "../gfx/temp/ep1_en.pal"
