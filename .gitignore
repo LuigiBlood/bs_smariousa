@@ -3,3 +3,8 @@
 /roms/*
 !/roms/put_roms_here
 /tools/*
+/gfx/temp/*
+/gfx/work/*
+!/gfx/temp/temp_folder
+/doc/*
+!/doc/doc.txt

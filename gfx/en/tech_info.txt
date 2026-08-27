@@ -1,0 +1,6 @@
+ep1.png - Must use the last 7 16-color palettes
+ep2.png - Must use the last 7 16-color palettes
+ep3.png - Must use the last 7 16-color palettes
+ep4.png - Must use the last 7 16-color palettes
+the_end.png - Can use 8 16-color palettes
+createdby.png - 1 16-color palette

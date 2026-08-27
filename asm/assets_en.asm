@@ -9,10 +9,10 @@ insert menu_chr_obj_logo,"../gfx/temp/obj_logo_en.chr"
 //Include all graphics
 enqueue pc
 seekAddr($B08000)
-insert ep1_pal_title,"../gfx/temp/ep1_en.pal"
-insert ep2_pal_title,"../gfx/temp/ep2_en.pal"
-insert ep3_pal_title,"../gfx/temp/ep3_en.pal"
-insert ep4_pal_title,"../gfx/temp/ep4_en.pal"
+insert ep1_pal_title,"../roms/bs_supermariousa_ep1.bs",0x4FC00,0x20; insert "../gfx/temp/ep1_en.pal"
+insert ep2_pal_title,"../roms/bs_supermariousa_ep2.bs",0x4FC00,0x20; insert "../gfx/temp/ep2_en.pal"
+insert ep3_pal_title,"../roms/bs_supermariousa_ep3.bs",0x4FC00,0x20; insert "../gfx/temp/ep3_en.pal"
+insert ep4_pal_title,"../roms/bs_supermariousa_ep4.bs",0x4FC00,0x20; insert "../gfx/temp/ep4_en.pal"
 insert ep4_pal_end,"../gfx/temp/the_end_en.pal"
 
 seekAddr($B18000)
