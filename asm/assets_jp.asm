@@ -1,3 +1,4 @@
+//Menu Graphics
 insert menu_pal_bg1,"../gfx/temp/bg1_jp.pal"
 insert menu_chr_bg1,"../gfx/temp/bg1_jp.chr"
 insert menu_map_bg1,"../gfx/temp/bg1_jp.map"
@@ -18,7 +19,7 @@ insert menu_chr_obj_logo,"../gfx/temp/obj_logo_jp.chr"
 //0x70000 - $8E8000 - 0x8000	= Graphics (Current Episode)
 //0x78000 - $8F8000 - 0x8000	= Graphics (Next Episode)
 
-//Include all graphics
+//Episode Title Cards and The End
 enqueue pc
 seekAddr($B08000)
 insert ep1_pal_title,"../roms/bs_supermariousa_ep1.bs",0x4FC00,0x200
