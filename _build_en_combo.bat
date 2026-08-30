@@ -39,6 +39,9 @@ echo - en/controls_text.png
 echo - en/logo.png
 "./tools/conv/superfamiconv.exe" tiles -i "./gfx/en/logo.png" -p "./gfx/en/logo.pal" -d "./gfx/temp/logo.chr" -B 4
 "./tools/conv/superfamiconv.exe" map -i "./gfx/en/logo.png" -p "./gfx/en/logo.pal" -t "./gfx/temp/logo.chr" -d "./gfx/temp/logo.map" -B 4 -P 7 -T 384
+echo - en/credits1.png
+"./tools/conv_r/superfamiconv.exe" tiles -i "./gfx/en/credits1.png" -p "./gfx/en/credits.pal" -d "./gfx/temp/credits1.chr" -B 2 -W 16 -H 16
+"./tools/conv_r/superfamiconv.exe" map -i "./gfx/en/credits1.png" -p "./gfx/en/credits.pal" -t "./gfx/temp/credits1.chr" -d "./gfx/temp/credits1.map" -B 2 -W 16 -H 16
 echo -- Build ROM...
 "./tools/bass/bass" build_en_combo.asm
 echo Done.
