@@ -10,6 +10,6 @@ echo - icons.png
 "./tools/conv/superfamiconv.exe" -i "./gfx/icons.png" -p "./gfx/temp/icons.pal" -t "./gfx/temp/icons.chr" -S -W 16 -H 16
 echo - jp/obj_logo_jp.png
 "./tools/conv/superfamiconv.exe" -i "./gfx/jp/obj_logo_jp.png" -p "./gfx/temp/obj_logo_jp.pal" -t "./gfx/temp/obj_logo_jp.chr" -S -D -W 16 -H 16
-"./tools/bass/bass" build_jp_combo.asm
+"./tools/bass/bass" ./build/build_jp_combo.asm
 echo Done.
 pause

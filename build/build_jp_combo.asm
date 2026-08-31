@@ -2,17 +2,17 @@
 //Standalone Combo (All Episodes) Version
 architecture snes.cpu
 
-include "./inc/snes.inc"
-include "./inc/snes_alloc.inc"
-include "./inc/snes_dma.inc"
-include "./inc/snes_msu1.inc"
-include "./inc/macros_lorom.inc"
+include "../inc/snes.inc"
+include "../inc/snes_alloc.inc"
+include "../inc/snes_dma.inc"
+include "../inc/snes_msu1.inc"
+include "../inc/macros_lorom.inc"
 
-output "./out/bs_supermariousa_combo_jp.sfc", create
+output "../out/bs_supermariousa_combo_jp.sfc", create
 seekFile(0); fill $200000,$FF
-seekFile(0); insert "./roms/bs_supermariousa_ep1.bs"
+seekFile(0); insert "../roms/bs_supermariousa_ep1.bs"
 
-include "./asm/combo_jp.asm"
+include "../asm/combo_jp.asm"
 
 seekAddr($86800C); db 0		//Episode (0-3)
 seekAddr($86800E); db 0		//?
