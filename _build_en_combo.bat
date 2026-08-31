@@ -42,6 +42,10 @@ echo - en/logo.png
 echo - en/credits1.png
 "./tools/conv_r/superfamiconv.exe" tiles -i "./gfx/en/credits1.png" -p "./gfx/en/credits.pal" -d "./gfx/temp/credits1.chr" -B 2 -W 16 -H 16
 "./tools/conv_r/superfamiconv.exe" map -i "./gfx/en/credits1.png" -p "./gfx/en/credits.pal" -t "./gfx/temp/credits1.chr" -d "./gfx/temp/credits1.map" -B 2 -W 16 -H 16
+echo - en/credits2_ep1_1.png
+"./tools/conv_r/superfamiconv.exe" convert -i "./gfx/en/credits2_ep1_1.png" -p "./gfx/temp/credits2_ep1_1.pal" -t "./gfx/temp/credits2_ep1_1.chr" -m "./gfx/temp/credits2_ep1_1.map" -B 4 -H 16 -W 16 -P 1 --color-zero 000000
+echo - en/credits2_ep1_2.png
+"./tools/conv_r/superfamiconv.exe" convert -i "./gfx/en/credits2_ep1_2.png" -p "./gfx/temp/credits2_ep1_2.pal" -t "./gfx/temp/credits2_ep1_2.chr" -m "./gfx/temp/credits2_ep1_2.map" -B 2 -H 16 -W 16 -P 0 --color-zero 000000
 echo -- Build ROM...
 "./tools/bass/bass" ./build/build_en_combo.asm
 echo Done.
