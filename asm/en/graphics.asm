@@ -44,13 +44,19 @@ insert ep3_pal_title,"../../roms/bs_supermariousa_ep3.bs",0x4FC00,0x20; insert "
 insert ep4_pal_title,"../../roms/bs_supermariousa_ep4.bs",0x4FC00,0x20; insert "../../gfx/temp/ep4_en.pal"
 insert ep4_pal_end,"../../gfx/temp/the_end_en.pal"
 ep1_pal_credits:
-	insert "../../gfx/temp/credits2_ep1_2.pal"
-	insert "../../gfx/temp/credits2_ep1_2.pal"
-	insert "../../gfx/temp/credits2_ep1_2.pal"
-	insert "../../gfx/temp/credits2_ep1_2.pal"
-	insert "../../gfx/temp/credits2_ep1_1.pal"
-	insert "../../gfx/temp/credits2_ep1_1.pal"
+	fill $200,0
 
+enqueue pc
+seekAddr(ep1_pal_credits+0x00)
+	insert "../../gfx/temp/credits2_ep1_2.pal"
+seekAddr(ep1_pal_credits+0x20)
+	insert "../../gfx/temp/credits2_ep1_1.pal"
+	insert "../../gfx/temp/credits2_ep1_1.pal"
+seekAddr(ep1_pal_title); insert "../../gfx/temp/credits1.pal"
+seekAddr(ep2_pal_title); insert "../../gfx/temp/credits1.pal"
+seekAddr(ep3_pal_title); insert "../../gfx/temp/credits1.pal"
+seekAddr(ep4_pal_title); insert "../../gfx/temp/credits1.pal"
+dequeue pc
 
 
 seekAddr($B18000)
