@@ -33,6 +33,8 @@ echo - en/credits2_ep1_1.png
 "./tools/conv/superfamiconv.exe" convert -i "./gfx/en/credits2_ep1_1.png" -p "./gfx/temp/credits2_ep1_1.pal" -t "./gfx/temp/credits2_ep1_1.chr" -m "./gfx/temp/credits2_ep1_1.map" -B 4 -H 16 -W 16 -P 1 --color-zero 000000
 echo - en/credits2_ep1_2.png
 "./tools/conv/superfamiconv.exe" convert -i "./gfx/en/credits2_ep1_2.png" -p "./gfx/temp/credits2_ep1_2.pal" -t "./gfx/temp/credits2_ep1_2.chr" -m "./gfx/temp/credits2_ep1_2.map" -B 2 -H 16 -W 16 -P 0 --color-zero 000000
+echo - en/createdby.png
+"./tools/conv/superfamiconv.exe" convert -i "./gfx/en/createdby.png" -p "./gfx/temp/createdby.pal" -t "./gfx/temp/createdby.chr" -m "./gfx/temp/createdby.map" -B 4 --color-zero 000000
 echo -- Build ROM...
 "./tools/bass/bass" ./build/build_en_combo.asm
 echo Done.
