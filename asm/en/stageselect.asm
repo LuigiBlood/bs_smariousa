@@ -48,3 +48,17 @@ db $07,$54,$00,$16-1; insert "../../gfx/temp/logo.map",0x16*4,0x16
 db $FF
 
 insert logo_chr,"../../gfx/temp/logo.chr"
+
+//End Results Menu
+//Today's Results	$81DA01
+enqueue pc
+//Rearrange Tilemap for Results
+seekAddr($81DA1F); db $FF,$00 //db $0E,$1D
+seekAddr($81DA33); db $FF,$00 //db $1E,$1D
+dequeue pc
+
+//Logo
+enqueue pc
+seekAddr($80AAA6)
+	jsl hijack_logo_upload
+dequeue pc
