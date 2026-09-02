@@ -1,7 +1,8 @@
 # BS Super Mario USA - Power Challenge
 
 ## Staff
-- LuigiBlood - Hacking, Menu
+- LuigiBlood: Programming, Graphics
+- SinCama: Voice Director, Graphics
 
 ## Building
 ### Requirements
@@ -9,7 +10,7 @@
   - Must be in `./tools/bass/`.
   - Tested with bass v18
 - SuperFamiconv: https://github.com/Optiroc/SuperFamiconv
-  - **Compile/Use the `rust-rewrite` branch.** It has major improvements on the conversion process.
+  - **Compile/Use the `rust-rewrite` branch, v0.12.0-beta release.** It has major improvements on the conversion process.
   - Must be in `./tools/conv/`.
 - Put the original ROMs as:
   - `./roms/bs_supermariousa_ep1.bs` (SHA-1: `7dc4d3d2a11f2f4e05d7306053211131b7aa6d9f`)
