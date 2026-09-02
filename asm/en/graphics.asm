@@ -51,7 +51,6 @@ seekAddr(ep1_pal_credits+0x00)
 	insert "../../gfx/temp/credits2_ep1_2.pal"
 seekAddr(ep1_pal_credits+0x20)
 	insert "../../gfx/temp/credits2_ep1_1.pal"
-	insert "../../gfx/temp/credits2_ep1_1.pal"
 seekAddr(ep1_pal_title); insert "../../gfx/temp/credits1.pal"
 seekAddr(ep2_pal_title); insert "../../gfx/temp/credits1.pal"
 seekAddr(ep3_pal_title); insert "../../gfx/temp/credits1.pal"
