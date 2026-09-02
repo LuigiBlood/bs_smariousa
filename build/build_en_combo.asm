@@ -6,6 +6,7 @@ include "../inc/snes.inc"
 include "../inc/snes_alloc.inc"
 include "../inc/snes_dma.inc"
 include "../inc/snes_msu1.inc"
+include "../inc/snes_gfx.inc"
 include "../inc/macros_lorom.inc"
 
 output "../out/bs_supermariousa_combo_en.sfc", create

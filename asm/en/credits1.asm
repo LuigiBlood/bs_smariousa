@@ -26,28 +26,19 @@ enqueue pc
 seekAddr($9EC000); insert "../../gfx/temp/credits1.chr"
 
 seekAddr($80A3CE+0); insert "../../gfx/temp/credits1.map",0x200+(0x40*0),0x40; insert "../../gfx/temp/credits1.map",0x400+(0x40*0),0x40
+setMapPriorityBit(0x80)
 seekAddr($81E8D9+4); insert "../../gfx/temp/credits1.map",0x200+(0x40*1),0x40; insert "../../gfx/temp/credits1.map",0x400+(0x40*1),0x40
+setMapPriorityBit(0x80)
 seekAddr($81E95E+4); insert "../../gfx/temp/credits1.map",0x200+(0x40*2),0x40; insert "../../gfx/temp/credits1.map",0x400+(0x40*2),0x40
+setMapPriorityBit(0x80)
 seekAddr($81E9E3+4); insert "../../gfx/temp/credits1.map",0x200+(0x40*3),0x40; insert "../../gfx/temp/credits1.map",0x400+(0x40*3),0x40
+setMapPriorityBit(0x80)
 seekAddr($81EA68+4); insert "../../gfx/temp/credits1.map",0x200+(0x40*4),0x40; insert "../../gfx/temp/credits1.map",0x400+(0x40*4),0x40
+setMapPriorityBit(0x80)
 seekAddr($81EAED+4); insert "../../gfx/temp/credits1.map",0x200+(0x40*5),0x40; insert "../../gfx/temp/credits1.map",0x400+(0x40*5),0x40
+setMapPriorityBit(0x80)
 seekAddr($81EB72+4); insert "../../gfx/temp/credits1.map",0x200+(0x40*6),0x40; insert "../../gfx/temp/credits1.map",0x400+(0x40*6),0x40
+setMapPriorityBit(0x80)
 seekAddr($81EBF7+4); insert "../../gfx/temp/credits1.map",0x200+(0x40*7),0x40; insert "../../gfx/temp/credits1.map",0x400+(0x40*7),0x40
-
-inline addPriorityBit(size) {
-	define x = 0
-	while {x} < {size} {
-		db (read(origin()))
-		db (read(origin()) | 0x20)
-		evaluate x = ({x} + 2)
-	}
-}
-seekAddr($80A3CE+0); addPriorityBit(0x80)
-seekAddr($81E8D9+4); addPriorityBit(0x80)
-seekAddr($81E95E+4); addPriorityBit(0x80)
-seekAddr($81E9E3+4); addPriorityBit(0x80)
-seekAddr($81EA68+4); addPriorityBit(0x80)
-seekAddr($81EAED+4); addPriorityBit(0x80)
-seekAddr($81EB72+4); addPriorityBit(0x80)
-seekAddr($81EBF7+4); addPriorityBit(0x80)
+setMapPriorityBit(0x80)
 dequeue pc
