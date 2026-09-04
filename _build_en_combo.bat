@@ -41,6 +41,8 @@ echo - en/createdby.png
 
 echo - en/resultsrecord.png
 "./tools/conv/superfamiconv.exe" convert -i "./gfx/en/resultsrecord.png" -p "./gfx/temp/resultsrecord.pal" -t "./gfx/temp/resultsrecord.chr" -m "./gfx/temp/resultsrecord.map" -B 2 -N 2 -W 16 -H 16
+echo - en/postcard.png
+"./tools/conv/superfamiconv.exe" convert -i "./gfx/en/postcard.png" -p "./gfx/temp/postcard.pal" -t "./gfx/temp/postcard.chr" -m "./gfx/temp/postcard.map" -B 2 -N 8 -W 16 -H 16 -T 512 --color-zero 000000
 echo -- Build ROM...
 "./tools/bass/bass" ./build/build_en_combo.asm
 echo Done.
