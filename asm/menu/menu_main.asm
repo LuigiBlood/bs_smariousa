@@ -48,8 +48,7 @@ state_mainmenu_init:	//upload
 
 	//Play & Repeat Track 0
 	lda.w #0
-	sec
-	jsl msu_play
+	sec; jsl msu_play
 
 	//Prep Video
 	sep #$20
@@ -132,6 +131,10 @@ state_launch_game:
 	jsr wait_vblank
 	jsr reset_apu
 	jsr wait_vblank
+	//Play Controls Explanation Track
+	rep #$20
+	lda.w #5
+	clc; jsl msu_play
 	//Jump to main game
 	sep #$30
 	jml $808000

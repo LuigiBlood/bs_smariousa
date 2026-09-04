@@ -2,7 +2,6 @@ msu_play:
 	//A:	Track Number (16-bit)
 	//C:	Unset = don't repeat
 	//		Set = repeat
-	php
 	pha
 
 	//if MSU1 is already playing a song, don't do anything
@@ -27,6 +26,13 @@ msu_play:
 +;	
 	rep #$20
 	pla
+	rtl
+
+msu_stop:
+	php
+	sep #$20
+	lda.b #$00
+	sta.w MSU_PLAY
 	plp
 	rtl
 
