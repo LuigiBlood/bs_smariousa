@@ -45,36 +45,66 @@ insert ep4_pal_title,"../../roms/bs_supermariousa_ep4.bs",0x4FC00,0x20; insert "
 insert ep4_pal_end,"../../gfx/temp/the_end_en.pal"
 ep1_pal_credits:
 	fill $200,0
+ep2_pal_credits:
+	fill $200,0
+ep3_pal_credits:
+	fill $200,0
+ep4_pal_credits:
+	fill $200,0
 
 enqueue pc
-seekAddr(ep1_pal_credits+0x00)
-	insert "../../gfx/temp/credits2_ep1_2.pal"
-seekAddr(ep1_pal_credits+0x20)
-	insert "../../gfx/temp/credits2_ep1_1.pal"
+seekAddr(ep1_pal_credits+0x00); insert "../../gfx/temp/credits2_ep1_2.pal"
+seekAddr(ep1_pal_credits+0x20);	insert "../../gfx/temp/credits2_ep1_1.pal"
+seekAddr(ep2_pal_credits+0x00); insert "../../gfx/temp/credits2_ep2_2.pal"
+seekAddr(ep2_pal_credits+0x20);	insert "../../gfx/temp/credits2_ep2_1.pal"
+seekAddr(ep3_pal_credits+0x00); insert "../../gfx/temp/credits2_ep3_2.pal"
+seekAddr(ep3_pal_credits+0x20);	insert "../../gfx/temp/credits2_ep3_1.pal"
+seekAddr(ep4_pal_credits+0x00); insert "../../gfx/temp/credits2_ep4_2.pal"
+seekAddr(ep4_pal_credits+0x20);	insert "../../gfx/temp/credits2_ep4_1.pal"
+
 seekAddr(ep1_pal_title); insert "../../gfx/temp/credits1.pal"
 seekAddr(ep2_pal_title); insert "../../gfx/temp/credits1.pal"
 seekAddr(ep3_pal_title); insert "../../gfx/temp/credits1.pal"
 seekAddr(ep4_pal_title); insert "../../gfx/temp/credits1.pal"
 dequeue pc
 
-
-seekAddr($B18000)
 insert ep1_map_title,"../../gfx/temp/ep1_en.map"	//0x800 bytes
 insert ep2_map_title,"../../gfx/temp/ep2_en.map"	//0x800 bytes
 insert ep3_map_title,"../../gfx/temp/ep3_en.map"	//0x800 bytes
 insert ep4_map_title,"../../gfx/temp/ep4_en.map"	//0x800 bytes
 insert ep4_map_end,"../../gfx/temp/the_end_en.map"	//0x800 bytes
+
+seekAddr($B18000)
 ep1_map_credits2_bg1:
 	insert_credits2("../../gfx/temp/credits2_ep1_1.map")	//0x2000 bytes
 ep1_map_credits2_bg3:
 	insert_credits2("../../gfx/temp/credits2_ep1_2.map")	//0x2000 bytes
+ep2_map_credits2_bg1:
+	insert_credits2("../../gfx/temp/credits2_ep2_1.map")	//0x2000 bytes
+ep2_map_credits2_bg3:
+	insert_credits2("../../gfx/temp/credits2_ep2_2.map")	//0x2000 bytes
+seekAddr($B28000)
+ep3_map_credits2_bg1:
+	insert_credits2("../../gfx/temp/credits2_ep3_1.map")	//0x2000 bytes
+ep3_map_credits2_bg3:
+	insert_credits2("../../gfx/temp/credits2_ep3_2.map")	//0x2000 bytes
+ep4_map_credits2_bg1:
+	insert_credits2("../../gfx/temp/credits2_ep4_1.map")	//0x2000 bytes
+ep4_map_credits2_bg3:
+	insert_credits2("../../gfx/temp/credits2_ep4_2.map")	//0x2000 bytes
 
-seekAddr($B28000); insert ep1_chr_title,"../../gfx/temp/ep1_en.chr"
-seekAddr($B38000); insert ep2_chr_title,"../../gfx/temp/ep2_en.chr"
-seekAddr($B48000); insert ep3_chr_title,"../../gfx/temp/ep3_en.chr"
-seekAddr($B58000); insert ep4_chr_title,"../../gfx/temp/ep4_en.chr"
-seekAddr($B68000); insert ep4_chr_end,"../../gfx/temp/the_end_en.chr"
-seekAddr($B78000); insert ep1_chr_credits_bg1,"../../gfx/temp/credits2_ep1_1.chr"
-seekAddr($B88000); insert ep1_chr_credits_bg3,"../../gfx/temp/credits2_ep1_2.chr"
+seekAddr($B38000); insert ep1_chr_title,"../../gfx/temp/ep1_en.chr"
+seekAddr($B48000); insert ep2_chr_title,"../../gfx/temp/ep2_en.chr"
+seekAddr($B58000); insert ep3_chr_title,"../../gfx/temp/ep3_en.chr"
+seekAddr($B68000); insert ep4_chr_title,"../../gfx/temp/ep4_en.chr"
+seekAddr($B78000); insert ep4_chr_end,"../../gfx/temp/the_end_en.chr"
+seekAddr($B88000); insert ep1_chr_credits_bg1,"../../gfx/temp/credits2_ep1_1.chr"
+seekAddr($B98000); insert ep1_chr_credits_bg3,"../../gfx/temp/credits2_ep1_2.chr"
+seekAddr($BA8000); insert ep2_chr_credits_bg1,"../../gfx/temp/credits2_ep2_1.chr"
+seekAddr($BB8000); insert ep2_chr_credits_bg3,"../../gfx/temp/credits2_ep2_2.chr"
+seekAddr($BC8000); insert ep3_chr_credits_bg1,"../../gfx/temp/credits2_ep3_1.chr"
+seekAddr($BD8000); insert ep3_chr_credits_bg3,"../../gfx/temp/credits2_ep3_2.chr"
+seekAddr($BE8000); insert ep4_chr_credits_bg1,"../../gfx/temp/credits2_ep4_1.chr"
+seekAddr($BF8000); insert ep4_chr_credits_bg3,"../../gfx/temp/credits2_ep4_2.chr"
 
 dequeue pc

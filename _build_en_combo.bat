@@ -36,9 +36,21 @@ echo - en/credits2_ep1_1.png
 "./tools/conv/superfamiconv.exe" convert -i "./gfx/en/credits2_ep1_1.png" -p "./gfx/temp/credits2_ep1_1.pal" -t "./gfx/temp/credits2_ep1_1.chr" -m "./gfx/temp/credits2_ep1_1.map" -B 4 -N 1 -H 16 -W 16 --palette-base-offset 1 --color-zero 000000
 echo - en/credits2_ep1_2.png
 "./tools/conv/superfamiconv.exe" convert -i "./gfx/en/credits2_ep1_2.png" -p "./gfx/temp/credits2_ep1_2.pal" -t "./gfx/temp/credits2_ep1_2.chr" -m "./gfx/temp/credits2_ep1_2.map" -B 2 -N 4 -H 16 -W 16 --palette-base-offset 0 --color-zero 000000
+echo - en/credits2_ep2_1.png
+"./tools/conv/superfamiconv.exe" convert -i "./gfx/en/credits2_ep2_1.png" -p "./gfx/temp/credits2_ep2_1.pal" -t "./gfx/temp/credits2_ep2_1.chr" -m "./gfx/temp/credits2_ep2_1.map" -B 4 -N 1 -H 16 -W 16 --palette-base-offset 1 --color-zero 000000
+echo - en/credits2_ep2_2.png
+"./tools/conv/superfamiconv.exe" convert -i "./gfx/en/credits2_ep2_2.png" -p "./gfx/temp/credits2_ep2_2.pal" -t "./gfx/temp/credits2_ep2_2.chr" -m "./gfx/temp/credits2_ep2_2.map" -B 2 -N 4 -H 16 -W 16 --palette-base-offset 0 --color-zero 000000
+echo - en/credits2_ep3_1.png
+"./tools/conv/superfamiconv.exe" convert -i "./gfx/en/credits2_ep3_1.png" -p "./gfx/temp/credits2_ep3_1.pal" -t "./gfx/temp/credits2_ep3_1.chr" -m "./gfx/temp/credits2_ep3_1.map" -B 4 -N 1 -H 16 -W 16 --palette-base-offset 1 --color-zero 000000
+echo - en/credits2_ep3_2.png
+"./tools/conv/superfamiconv.exe" convert -i "./gfx/en/credits2_ep3_2.png" -p "./gfx/temp/credits2_ep3_2.pal" -t "./gfx/temp/credits2_ep3_2.chr" -m "./gfx/temp/credits2_ep3_2.map" -B 2 -N 4 -H 16 -W 16 --palette-base-offset 0 --color-zero 000000
+echo - en/credits2_ep4_1.png
+"./tools/conv/superfamiconv.exe" convert -i "./gfx/en/credits2_ep4_1.png" -p "./gfx/temp/credits2_ep4_1.pal" -t "./gfx/temp/credits2_ep4_1.chr" -m "./gfx/temp/credits2_ep4_1.map" -B 4 -N 1 -H 16 -W 16 --palette-base-offset 1 --color-zero 000000
+echo - en/credits2_ep4_2.png
+"./tools/conv/superfamiconv.exe" convert -i "./gfx/en/credits2_ep4_2.png" -p "./gfx/temp/credits2_ep4_2.pal" -t "./gfx/temp/credits2_ep4_2.chr" -m "./gfx/temp/credits2_ep4_2.map" -B 2 -N 4 -H 16 -W 16 --palette-base-offset 0 --color-zero 000000
+
 echo - en/createdby.png
 "./tools/conv/superfamiconv.exe" convert -i "./gfx/en/createdby.png" -p "./gfx/temp/createdby.pal" -t "./gfx/temp/createdby.chr" -m "./gfx/temp/createdby.map" -B 4 -N 1 --color-zero 000000
-
 echo - en/resultsrecord.png
 "./tools/conv/superfamiconv.exe" convert -i "./gfx/en/resultsrecord.png" -p "./gfx/temp/resultsrecord.pal" -t "./gfx/temp/resultsrecord.chr" -m "./gfx/temp/resultsrecord.map" -B 2 -N 2 -W 16 -H 16
 echo - en/postcard.png
