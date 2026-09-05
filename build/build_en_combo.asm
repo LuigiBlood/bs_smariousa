@@ -1,4 +1,4 @@
-//Build BS Super Mario USA - Power Challenge (Japanese)
+//Build BS Super Mario USA - Power Challenge (English)
 //Standalone Combo (All Episodes) Version
 architecture snes.cpu
 
