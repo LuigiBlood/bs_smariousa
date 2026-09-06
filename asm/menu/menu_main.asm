@@ -75,17 +75,18 @@ state_mainmenu_loop:	//Control
 	beq ++
 	sep #$20
 	lda.w menu_select
-	beq +
-	dec.w menu_select
+	dec
+	and.b #$03
+	sta.w menu_select
 	lda.b #$06;	sta.w mirror_APUIO3
 +;	jmp state_mainmenu_loop_after
-+;	bit.w #$0004	//Down
++;	bit.w #$0024	//Select or Down
 	beq ++
 	sep #$20
 	lda.w menu_select
-	cmp.b #3
-	bcs +
-	inc.w menu_select
+	inc
+	and.b #$03
+	sta.w menu_select
 	lda.b #$06;	sta.w mirror_APUIO3
 +;	jmp state_mainmenu_loop_after
 +;
