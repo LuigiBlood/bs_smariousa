@@ -58,15 +58,12 @@ seekAddr($888000)
 seekAddr($88A000)
 	insert_credits2("../gfx/temp/credits2_ep4_2.map")
 
-seekAddr($8A8000)
-	insert chr_credits_bg1,"../gfx/temp/credits2_ep4_1.chr"
-	insert chr_credits_bg3,"../gfx/temp/credits2_ep4_2.chr"
+seekAddr($908000); insert chr_credits_bg1,"../gfx/temp/credits2_ep4_1.chr"
+seekAddr($8A8000); insert chr_credits_bg3,"../gfx/temp/credits2_ep4_2.chr"
 
 //Episode Title Card and The End
-seekAddr($89FC00)
-insert ep_curr_pal_title,"../roms/bs_supermariousa_ep4.bs",0x4FC00,0x20; insert "../gfx/temp/ep4_en.pal"
-seekAddr($89FE00)
-insert ep_next_pal_title,"../gfx/temp/the_end_en.pal"
+seekAddr($89FC00); insert ep_curr_pal_title,"../roms/bs_supermariousa_ep4.bs",0x4FC00,0x20; insert "../gfx/temp/ep4_en.pal"
+seekAddr($89FE00); insert ep_next_pal_title,"../gfx/temp/the_end_en.pal"
 
 enqueue pc
 seekAddr(ep_curr_pal_title); insert "../gfx/temp/credits1.pal"
