@@ -5,7 +5,7 @@ include "./en/stageselect.asm"
 include "./en/credits1.asm"
 include "./en/credits2_bs.asm"
 include "./en/createdby.asm"
-include "./en/confirmrecord.asm"
+include "./en/confirmrecord_bs.asm"
 include "./en/postcard_bs.asm"
 
 print hex:pc(), "\n"

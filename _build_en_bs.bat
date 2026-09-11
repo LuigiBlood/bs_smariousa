@@ -52,7 +52,7 @@ echo - en/credits2_ep4_2.png
 echo - en/createdby.png
 "./tools/conv/superfamiconv.exe" convert -i "./gfx/en/createdby.png" -p "./gfx/temp/createdby.pal" -t "./gfx/temp/createdby.chr" -m "./gfx/temp/createdby.map" -B 4 -N 1 --color-zero 000000
 echo - en/resultsrecord.png
-"./tools/conv/superfamiconv.exe" convert -i "./gfx/en/resultsrecord.png" -p "./gfx/temp/resultsrecord.pal" -t "./gfx/temp/resultsrecord.chr" -m "./gfx/temp/resultsrecord.map" -B 2 -N 2 -W 16 -H 16
+"./tools/conv/superfamiconv.exe" convert -i "./gfx/en/resultsrecord_bs.png" -p "./gfx/temp/resultsrecord_bs.pal" -t "./gfx/temp/resultsrecord_bs.chr" -m "./gfx/temp/resultsrecord_bs.map" -B 2 -N 2 -W 16 -H 16
 echo - en/postcard_bs.png
 "./tools/conv/superfamiconv.exe" convert -i "./gfx/en/postcard_bs.png" -p "./gfx/temp/postcard_bs.pal" -t "./gfx/temp/postcard_bs.chr" -m "./gfx/temp/postcard_bs.map" -B 2 -N 8 -W 16 -H 16 -T 512 --color-zero 000000
 echo -- Build ROM (Episode 1)...
