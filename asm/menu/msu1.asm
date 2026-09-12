@@ -33,6 +33,11 @@ msu_stop:
 	sep #$20
 	lda.b #$00
 	sta.w MSU_PLAY
+
+	sep #$20
+-;	lda.w MSU_STATUS
+	bit.b #%00010000
+	bne -
 	plp
 	rtl
 
@@ -42,5 +47,10 @@ msu_init:
 	lda.w #$0000
 	sta.w MSU_VOL
 	sta.w MSU_TRK
+
+	sep #$20
+-;	lda.w MSU_STATUS
+	bit.b #%00010000
+	bne -
 	plp
 	rtl
