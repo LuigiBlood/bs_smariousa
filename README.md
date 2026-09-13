@@ -1,8 +1,54 @@
 # BS Super Mario USA - Power Challenge
+This project adapts BS Super Mario USA as a single ROM with all 4 episodes in one with MSU1 in japanese, as well as a full english version fully redone, also in Satellaview format.
 
-## Staff
-- LuigiBlood: Programming, Graphics
-- SinCama: Voice Director, Graphics
+Remember: **Please play an episode until you reach the end with the score screen to make sure to save your progress.**
+This is a decision to keep the authenticity of the original version.
+
+This is sort of a score attack version of Super Mario Bros. 2, with a fully voiced story that happens after the original game that will sometimes affect the game.
+We hope you will enjoy this english version.
+
+### HOW TO RESET THE SAVE
+Hold L+R+X on the controller when booting the ROM until you reach the main menu.
+A sound effect will play when the save is successfully reset.
+
+## Japanese Version Staff (Standalone)
+- PROGRAMMING
+  - **LuigiBlood**
+
+## English Version Staff
+- PROGRAMMING
+  - **LuigiBlood**
+- VOICE DIRECTOR
+  - **SinCama**
+- GRAPHICS
+  - **LuigiBlood**
+  - **SinCama**
+  - **Clarissa Arts**
+- SPECIAL THANKS
+  - **Satarou Light**
+  - **dollycat9195**
+  - **kukun kun**
+  - **optiroc**
+  - **SatellaViny**
+
+### Cast
+- **Steven Medina**: Mario, Birdo Red, Clawgrip
+- **Santiago Vargas**: Luigi, Birdo Green
+- **Elliott Posadni**: Princess Peach
+- **Patrick Wallace**: Commander
+- **Ryan J. Hutchins**: Toad, Birdo Pink
+- **Emi Mastey**: Narrator, Mary
+- **Martin Gustavsson**: Mouser
+- **Thomas E. Thomas**: King, Tryclyde
+- **Tre'Vaughn Williams**: Wart, Fryguy
+### Additional Voices
+- **Kitty Kaboom**: Narrator B, Lola
+- **Ryan Redding**: Citizens
+- **Loren Collins**: TV Announcer
+- **Satarou Light**: Soccer Commentator
+- **Scottpilgrimrules**: Technical Difficulties
+- **Vinny Vinesauce**: Delivery Guys
+
 
 ## Building
 ### Requirements
